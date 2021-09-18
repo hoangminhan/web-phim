@@ -1,0 +1,10 @@
+@import "./variable";
+@import "./mixin";
+@import "./base";
+
+@import "./component/header.scss";
+@import "./component/footer";
+
+@import "./component/homePage";
+@import "./component/carousel";
+@import "./component/movieList.scss";

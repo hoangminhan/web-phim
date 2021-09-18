@@ -1,0 +1,118 @@
+.list__movie {
+  margin-top: 64px;
+  padding-bottom: 32px;
+
+  &__title {
+    color: $txt-white;
+    padding-bottom: 24px;
+    letter-spacing: 1px;
+  }
+
+  &__item {
+    &__image {
+    }
+
+    &__content {
+      color: $txt-white;
+      padding-top: 8px;
+
+      &__title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+      }
+    }
+    &__hover {
+      background-color: #2a303c;
+      display: none;
+      width: 95%;
+      min-height: 60px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+
+      &__content {
+        &__item {
+          padding: 5px 10px;
+          &-icon {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-around;
+
+            p {
+              padding: 10px;
+              //   background-color: #fff;
+              border: solid 1px #ccc;
+              border-radius: 50%;
+
+              color: #fff;
+            }
+            p:hover {
+              background-color: rgb(15, 181, 247);
+              border-color: rgb(15, 181, 247);
+            }
+            p:hover i {
+              color: black;
+            }
+          }
+
+          &__title {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            cursor: default;
+          }
+
+          &__date {
+            cursor: default;
+          }
+
+          &__rate {
+            cursor: default;
+
+            display: flex;
+            justify-content: space-around;
+            p {
+              i {
+                padding-right: 5px;
+              }
+            }
+          }
+          &__rate:first-child {
+            color: yellow;
+          }
+        }
+      }
+    }
+  }
+  &__item:hover {
+    cursor: pointer;
+    transform: scale(1.5, 1.3);
+  }
+  &__item:hover &__item__content {
+    display: none;
+  }
+  &__item:hover &__item__hover {
+    display: block;
+  }
+
+  &__pagination {
+    text-align: center;
+
+    &__button {
+      min-width: 100px;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+    }
+    &__button:hover {
+      background-color: #ccc;
+      border-radius: 5px;
+    }
+    &__button ~ &__button {
+      margin-left: 10px;
+    }
+  }
+}

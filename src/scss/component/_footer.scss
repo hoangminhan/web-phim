@@ -1,0 +1,130 @@
+.footer {
+  padding: 64px 0;
+  border-top: 6px solid #222222;
+  color: $txt-white;
+  background-color: $main-bg;
+
+  &__content {
+    &__title {
+      padding-bottom: 24px;
+    }
+
+    &__title:hover a {
+      text-decoration: underline;
+    }
+
+    &__item {
+      padding-top: 24px;
+      &__question:hover a,
+      &__info:hover a,
+      &__account:hover a,
+      &__contact:hover a {
+        text-decoration: underline;
+      }
+
+      &__question--padding {
+        padding-bottom: 24px;
+      }
+      &__question ~ &__question {
+        padding-top: 24px;
+      }
+
+      &__info ~ &__info {
+        padding-top: 24px;
+      }
+      &__account ~ &__account {
+        padding-top: 24px;
+      }
+      &__contact ~ &__contact {
+        padding-top: 24px;
+      }
+
+      &__language {
+        // padding-top: 32px;
+        height: 53px;
+        width: 75%;
+
+        &__input input {
+          padding: 12px;
+          padding-left: 40px;
+          outline: none;
+          border: none;
+
+          &::placeholder {
+            font-size: 1.3rem;
+          }
+        }
+        &__input {
+          position: relative;
+          &-icon {
+            font-size: 1.6rem;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+          }
+
+          &-arrow {
+            position: absolute;
+            right: 0;
+            font-size: 1.6rem;
+            color: #000;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+          }
+
+          &-input:focus ~ &-select {
+            display: block;
+            top: 41px;
+          }
+        }
+
+        &__input-select {
+          position: absolute;
+          background-color: #fff;
+          top: 0;
+          left: 0;
+          right: 2px;
+          display: none;
+          li {
+            color: #000;
+            padding-left: 40px;
+            font-size: 1.2rem;
+            height: 30px;
+            line-height: 30px;
+          }
+
+          li:hover {
+            // background-color: rgb(149, 174, 248);
+            background-color: #ccc;
+          }
+        }
+      }
+
+      &__image {
+        padding-top: 24px;
+      }
+    }
+  }
+
+  &__backtop {
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+    z-index: 99;
+    display: none;
+    &__icon {
+      font-size: 5rem;
+      cursor: pointer;
+    }
+  }
+  &__backtop:hover &__backtop__icon {
+    color: #ccc;
+  }
+
+  &__backtop.active {
+    display: block;
+  }
+}

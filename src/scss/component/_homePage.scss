@@ -1,0 +1,98 @@
+.content__home {
+  min-height: 600px;
+  background-color: #2a303c;
+
+  &__popular {
+    padding-top: 64px;
+  }
+}
+.modal__detail {
+  position: absolute;
+  top: 32px;
+  left: 15%;
+  right: 15%;
+  background-color: #ccc;
+  display: none;
+  min-height: 600px;
+
+  &__icon {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    padding: 10px;
+    background-color: #2a303c;
+    border-radius: 50px;
+    cursor: pointer;
+
+    i {
+      font-size: 2rem;
+      color: #fff;
+    }
+  }
+
+  &__header {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+
+    &__title {
+      color: $txt-white;
+      letter-spacing: 1px;
+    }
+
+    &__content {
+      padding-top: 8px;
+      display: flex;
+      align-items: center;
+
+      &__btn:hover {
+      }
+      &__btn button {
+        min-width: 100px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        outline: none;
+        border: none;
+
+        i {
+          font-size: 1.5rem;
+        }
+      }
+      &__btn button:hover {
+        background-color: #2a303c;
+        color: #fff;
+        border-radius: 2px;
+      }
+
+      &__icon {
+        padding-left: 15px;
+        display: flex;
+
+        &__item {
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 25px;
+          cursor: pointer;
+
+          i {
+            font-size: 1.7rem;
+          }
+        }
+        &__item:hover {
+          background-color: #2a303c;
+          color: #fff;
+        }
+        &__item ~ &__item {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
+.modal__detail.active {
+  display: block;
+}
