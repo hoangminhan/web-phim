@@ -1,5 +1,6 @@
 .list__movie {
   margin-top: 64px;
+  padding: 0 12px;
   padding-bottom: 32px;
 
   &__title {
@@ -10,6 +11,9 @@
 
   &__item {
     &__image {
+      img {
+        display: block;
+      }
     }
 
     &__content {
@@ -26,7 +30,7 @@
     &__hover {
       background-color: #2a303c;
       display: none;
-      width: 95%;
+      width: 97%;
       min-height: 60px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.8);

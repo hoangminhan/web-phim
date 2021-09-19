@@ -7,6 +7,13 @@ SimilarMovie.propTypes = {};
 
 function SimilarMovie(props) {
   const { dataSimilar } = props;
+  let data = [];
+  for (let i = 0; i < 8; i++) {
+    if (dataSimilar) {
+      data = [...data, dataSimilar[i]];
+    }
+  }
+  console.log(data);
   return (
     <div className="similar__movie">
       <Grid col={4} smCol={1} mdCol={2} gap={15}>

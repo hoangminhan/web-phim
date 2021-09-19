@@ -10,22 +10,25 @@ function Carousel(props) {
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDisLike, setToggleDisLike] = useState(false);
   const activeRef = useRef(null);
-  const handleClick = (e) => {
-    // activeRef.current.classList.toggle("active");
-    const receive = e;
-    if (receive === "play") {
-      // setToggleClass(!toggleClass);
-      // setToggleDisLike(false);
-      // setToggleLike(false);
-    } else if (receive === "like") {
-      setToggleLike(!toggleLike);
-      setToggleDisLike(false);
-      setToggleClass(false);
-    } else {
-      setToggleLike(false);
-      setToggleDisLike(!toggleDisLike);
-      setToggleClass(false);
-    }
+  // const handleClick = (e) => {
+  //   // activeRef.current.classList.toggle("active");
+  //   const receive = e;
+  //   if (receive === "play") {
+  //     // setToggleClass(!toggleClass);
+  //     // setToggleDisLike(false);
+  //     // setToggleLike(false);
+  //   } else if (receive === "like") {
+  //     setToggleLike(!toggleLike);
+  //     setToggleDisLike(false);
+  //     setToggleClass(false);
+  //   } else {
+  //     setToggleLike(false);
+  //     setToggleDisLike(!toggleDisLike);
+  //     setToggleClass(false);
+  //   }
+  // };
+  const handleClick = (data) => {
+    props.handleClickCarousel(data);
   };
 
   return (
@@ -73,7 +76,7 @@ function Carousel(props) {
                           : "carousel__content__item__footer__item"
                       }
                       // ref={activeRef}
-                      onClick={() => handleClick("play")}
+                      onClick={() => handleClick(item.id)}
                     >
                       <p className="carousel__content__item__footer__item--play">
                         <i class="bx bx-right-arrow"></i>
@@ -85,7 +88,6 @@ function Carousel(props) {
                           ? `carousel__content__item__footer__item active`
                           : "carousel__content__item__footer__item"
                       }
-                      onClick={() => handleClick("like")}
                     >
                       <p className="carousel__content__item__footer__item--play">
                         <i class="bx bx-like"></i>
@@ -97,7 +99,6 @@ function Carousel(props) {
                           ? `carousel__content__item__footer__item active`
                           : "carousel__content__item__footer__item"
                       }
-                      onClick={() => handleClick("disLike")}
                     >
                       <p className="carousel__content__item__footer__item--play">
                         <i class="bx bx-dislike"></i>

@@ -16,6 +16,7 @@ function MovieList(props) {
   };
   const handleClickDetail = (value) => {
     props.showDetailMovie(value);
+    document.documentElement.scrollTop = 80;
   };
   return (
     <div className="list__movie">
