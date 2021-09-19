@@ -11,9 +11,10 @@
   top: 32px;
   left: 15%;
   right: 15%;
-  background-color: #ccc;
+  background-color: #141414;
   display: none;
-  min-height: 600px;
+  overflow: scroll;
+  z-index: 90;
 
   &__icon {
     position: absolute;
@@ -23,73 +24,128 @@
     background-color: #2a303c;
     border-radius: 50px;
     cursor: pointer;
+    z-index: 2;
 
     i {
       font-size: 2rem;
       color: #fff;
     }
   }
+  &__icon:hover {
+    border: 1px solid #ccc;
+  }
 
-  &__header {
-    position: absolute;
-    bottom: 20%;
-    left: 5%;
+  &__image {
+    position: relative;
+    &__header {
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
 
-    &__title {
-      color: $txt-white;
-      letter-spacing: 1px;
-    }
-
-    &__content {
-      padding-top: 8px;
-      display: flex;
-      align-items: center;
-
-      &__btn:hover {
+      &__title {
+        color: $txt-white;
+        letter-spacing: 1px;
       }
-      &__btn button {
-        min-width: 100px;
-        padding: 10px;
+
+      &__content {
+        padding-top: 8px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        cursor: pointer;
 
-        outline: none;
-        border: none;
-
-        i {
-          font-size: 1.5rem;
+        &__btn:hover {
         }
-      }
-      &__btn button:hover {
-        background-color: #2a303c;
-        color: #fff;
-        border-radius: 2px;
-      }
-
-      &__icon {
-        padding-left: 15px;
-        display: flex;
-
-        &__item {
-          padding: 10px;
-          background-color: #fff;
-          border-radius: 25px;
+        &__btn button {
+          min-width: 100px;
+          padding: 2px 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           cursor: pointer;
 
+          outline: none;
+          border: none;
+
           i {
-            font-size: 1.7rem;
+            font-size: 3rem;
           }
         }
-        &__item:hover {
+        &__btn button:hover {
           background-color: #2a303c;
           color: #fff;
+          border-radius: 2px;
         }
-        &__item ~ &__item {
-          margin-left: 15px;
+
+        &__icon {
+          padding-left: 15px;
+          display: flex;
+
+          &__item {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+
+            i {
+              font-size: 1.7rem;
+            }
+          }
+          &__item:hover {
+            background-color: #2a303c;
+            color: #fff;
+          }
+          &__item ~ &__item {
+            margin-left: 15px;
+          }
         }
       }
+    }
+  }
+
+  &__content {
+    padding: 45px;
+    display: flex;
+
+    color: #fff;
+    font-size: 1.3rem;
+
+    &__item {
+      &__rate {
+        display: flex;
+        align-items: center;
+        color: yellow;
+        padding-right: 15px;
+
+        p {
+          padding-right: 5px;
+        }
+      }
+      &__content {
+        display: flex;
+      }
+
+      &__overview {
+        padding-top: 20px;
+      }
+
+      &__type,
+      &__company,
+      &__country {
+        display: flex;
+        padding-top: 10px;
+
+        strong {
+          padding-right: 10px;
+          opacity: 0.8;
+          font-weight: 100;
+        }
+      }
+    }
+    &__item:nth-child(1) {
+      flex: 3;
+      padding-right: 20px;
+    }
+    &__item:nth-child(2) {
+      flex: 2;
     }
   }
 }

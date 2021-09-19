@@ -75,6 +75,10 @@ img {
     padding: 0 10px;
   }
 }
+.container::after {
+  content: "";
+  clear: both;
+}
 
 .main {
   position: relative;
