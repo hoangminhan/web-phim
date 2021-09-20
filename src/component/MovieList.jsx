@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { API_KEY, URL_API, URL_IMG } from "../constant";
-import axios from "axios";
+
 import Grid from "./Grid";
 
 MovieList.propTypes = {
@@ -10,7 +10,7 @@ MovieList.propTypes = {
 };
 
 function MovieList(props) {
-  const { dataTopRate, title, Pagination, page } = props;
+  const { dataMovie, title, Pagination, page } = props;
   const handlePagination = (data) => {
     props.Pagination(data);
   };
@@ -22,9 +22,9 @@ function MovieList(props) {
     <div className="list__movie">
       <h2 className="list__movie__title"># {title}</h2>
 
-      <Grid col={6} smCol={3} mdCol={4} gap={16}>
-        {dataTopRate &&
-          dataTopRate.map((item, index) => {
+      <Grid col={6} smCol={2} mdCol={4} gap={16}>
+        {dataMovie &&
+          dataMovie.map((item, index) => {
             return (
               <div key={index} className="list__movie__item">
                 <div className="list__movie__item__image">

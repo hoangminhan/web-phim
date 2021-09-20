@@ -20,6 +20,7 @@ function ModalDetail(props) {
   };
   useEffect(() => {
     if (checkDetail) {
+      console.log("detail", checkDetail);
       const modalDetail = document.querySelector(".modal__detail");
       const modalOverlay = document.querySelector(".overlay__modal");
       modalDetail.classList.add("active");
@@ -39,7 +40,11 @@ function ModalDetail(props) {
 
             <div className="modal__detail__image__header">
               <h2 className="modal__detail__image__header__title">
-                {dataDetail?.title}
+                {dataDetail?.title
+                  ? dataDetail.title
+                  : dataDetail?.name
+                  ? dataDetail?.name
+                  : dataDetail?.original_name}
               </h2>
               <div className="modal__detail__image__header__content">
                 <div className="modal__detail__image__header__content__btn">

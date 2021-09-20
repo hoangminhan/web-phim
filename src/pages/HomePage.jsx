@@ -16,6 +16,9 @@ function HomePage(props) {
   const [filterPopular, setFilterPopular] = useState({
     page: 1,
   });
+  const [filterTvShow, setFilterTvShow] = useState({
+    page: 1,
+  });
   const [dataDetail, setDataDetail] = useState();
   const [dataSimilar, setDataSimilar] = useState();
   const [checkDetail, setCheckDetail] = useState();
@@ -47,7 +50,7 @@ function HomePage(props) {
   }, [filterPopular]);
   useEffect(() => {
     const fetchData = async () => {
-      const url = `${URL_API}/tv/popular${API_KEY}`;
+      const url = `${URL_API}/tv/popular${API_KEY}&page=${filterTvShow.page}`;
 
       try {
         const result = await axios(url);
@@ -120,6 +123,13 @@ function HomePage(props) {
       page: data,
     });
   };
+  const PaginationMovie = (page) => {
+    console.log(page);
+    setFilterTvShow({
+      ...filterTvShow,
+      page: page,
+    });
+  };
   const showDetailMovie = (data) => {
     setCheckDetail(data);
     document.documentElement.scrollTop = 0;
@@ -142,19 +152,18 @@ function HomePage(props) {
               handleClickCarousel={handleClickCarousel}
             />
             <MovieList
-              dataTopRate={dataTopRate}
+              dataMovie={dataTopRate}
               title="Top Rate"
-              Pagination={Pagination}
+              // Pagination={Pagination}
               page={filterPopular.page}
               showDetailMovie={showDetailMovie}
             />
 
-            {/* <MovieList
-              dataTopRate={dataMovieNow}
+            <MovieList
+              dataMovie={dataMovieNow}
               title="TV Shows"
               showDetailMovie={showDetailMovie}
-              Pagination={Pagination}
-            /> */}
+            />
           </div>
         </div>
       </div>

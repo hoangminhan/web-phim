@@ -13,7 +13,6 @@ function SimilarMovie(props) {
       data = [...data, dataSimilar[i]];
     }
   }
-  console.log(data);
   return (
     <div className="similar__movie">
       <Grid col={4} smCol={1} mdCol={2} gap={15}>
