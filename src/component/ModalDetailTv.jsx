@@ -2,18 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Iframe from "react-iframe";
+import { API_KEY, URL_API, URL_IMG_BIG } from "../constant";
+import getTypeFilm from "../ultils/getType";
+import SimilarMovie from "./SimilarMovie";
 
-import { API_KEY, URL_API, URL_IMG_BIG } from "../../constant";
-import getTypeFilm from "../../ultils/getType";
-import SimilarMovie from "../SimilarMovie";
-import loading from "../../assets/images/loading.jpg";
-import loading1 from "../../assets/images/loading1.png";
+ModalDetailTv.propTypes = {};
 
-ModalDetail.propTypes = {};
-
-function ModalDetail(props) {
+function ModalDetailTv(props) {
   const { checkDetail, dataDetail, dataSimilar } = props;
-  const [check, setCheck] = useState(false);
   const history = useHistory();
   const [dataVideo, setDataVideo] = useState();
   const [type, setType] = useState("movie");
@@ -24,18 +20,7 @@ function ModalDetail(props) {
     modalOverlay.classList.remove("visible");
     modalDetail.classList.remove("active");
     setDataVideo("");
-    setCheck(true);
   };
-
-  // const getVideo = async () => {
-  //   const url = `${URL_API}/${type}/${checkDetail}/videos${API_KEY}`;
-  //   const result = await axios(url);
-  //   const index = result?.data?.results.length - 1;
-  //   const data = result?.data?.results[index]?.key
-  //     ? result?.data?.results[index]?.key
-  //     : "LvUu7_R5sAE";
-  //   setDataVideo(data);
-  // };
 
   const getVideoTv = async () => {
     const url = `${URL_API}/tv/${checkDetail}/videos${API_KEY}`;
@@ -47,21 +32,18 @@ function ModalDetail(props) {
     setDataVideo(data);
   };
   const getVideo = async () => {
-    try {
-      const url = `${URL_API}/${type}/${checkDetail}/videos${API_KEY}`;
-      const result = await axios(url);
-      console.log("result.success.success", result);
-      const index = result?.data?.results.length;
-      debugger;
-      if (index === 0) {
-        getVideoTv();
-      } else {
-        const data = result?.data?.results[index - 1]?.key
-          ? result?.data?.results[index - 1]?.key
-          : "LvUu7_R5sAE";
-        setDataVideo(data);
-      }
-    } catch (error) {}
+    const url = `${URL_API}/${type}/${checkDetail}/videos${API_KEY}`;
+    const result = await axios(url);
+    const index = result?.data?.results.length;
+    debugger;
+    if (index === 0) {
+      getVideoTv();
+    } else {
+      const data = result?.data?.results[index - 1]?.key
+        ? result?.data?.results[index - 1]?.key
+        : "LvUu7_R5sAE";
+      setDataVideo(data);
+    }
   };
 
   useEffect(() => {
@@ -81,6 +63,8 @@ function ModalDetail(props) {
   }, [checkDetail]);
 
   const handleDetail = (item) => {
+    debugger;
+    console.log("id", item.id);
     const { location } = history;
     const name = item.name
       ? item.name.replaceAll(" ", "-")
@@ -117,13 +101,8 @@ function ModalDetail(props) {
             <>
               <div className="modal__detail__image">
                 <img
-                  src={
-                    dataDetail?.backdrop_path
-                      ? `${URL_IMG_BIG}${dataDetail?.backdrop_path}`
-                      : loading1
-                  }
+                  src={`${URL_IMG_BIG}${dataDetail?.backdrop_path}`}
                   alt=""
-                  style={{ width: "100%" }}
                 />
 
                 <div className="modal__detail__image__header">
@@ -202,4 +181,4 @@ function ModalDetail(props) {
   );
 }
 
-export default ModalDetail;
+export default ModalDetailTv;

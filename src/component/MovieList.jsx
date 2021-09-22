@@ -12,7 +12,8 @@ MovieList.propTypes = {
 
 function MovieList(props) {
   const history = useHistory();
-  const { dataMovie, title, Pagination, page } = props;
+  const { dataMovie, title, Pagination, page, type } = props;
+  console.log("type", type);
   const handlePagination = (data) => {
     props.Pagination(data);
   };

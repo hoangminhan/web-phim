@@ -6,6 +6,7 @@ import { URL_API, API_KEY, URL_IMG, URL_IMG_BIG } from "../constant";
 import MovieList from "../component/MovieList";
 import SimilarMovie from "../component/SimilarMovie";
 import ModalDetail from "../component/common/ModalDetail";
+import ModalDetailTv from "../component/ModalDetailTv";
 
 HomePage.propTypes = {};
 
@@ -156,12 +157,14 @@ function HomePage(props) {
               title="Top Rate"
               // Pagination={Pagination}
               page={filterPopular.page}
+              type="movie"
               showDetailMovie={showDetailMovie}
             />
 
             <MovieList
               dataMovie={dataMovieNow}
               title="TV Shows"
+              type="tv"
               showDetailMovie={showDetailMovie}
             />
           </div>

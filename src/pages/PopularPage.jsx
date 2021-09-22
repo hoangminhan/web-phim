@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Carousel from "../component/Carousel";
 import ModalDetail from "../component/common/ModalDetail";
+import ModalDetailTv from "../component/ModalDetailTv";
 import MovieList from "../component/MovieList";
 import { API_KEY, URL_API } from "../constant";
 
@@ -11,8 +12,10 @@ function PopularPage(props) {
   const [dataMoviePopular, setDataMoviePopular] = useState();
   const [dataTvShowPopular, setDataTvShowPopular] = useState();
   const [dataDetail, setDataDetail] = useState();
+  const [dataDetailTv, setDataDetailTv] = useState();
   const [checkDetail, setCheckDetail] = useState();
   const [dataSimilar, setDataSimilar] = useState();
+  const [dataSimilarTv, setDataSimilarTv] = useState();
   const [filterMoviePopular, setFilterMoviePopular] = useState({ page: 1 });
 
   const settings = {
@@ -74,6 +77,22 @@ function PopularPage(props) {
       const result = await axios(url);
       console.log(result.data);
       setDataSimilar(result.data.results);
+    };
+    getDataSimilar();
+    getDataDetail();
+  }, [checkDetail]);
+  useEffect(() => {
+    const getDataDetail = async () => {
+      const url = `${URL_API}/tv/${checkDetail}${API_KEY}`;
+      const result = await axios(url);
+      setDataDetailTv(result.data);
+      console.log(result.data);
+    };
+    const getDataSimilar = async () => {
+      const url = `${URL_API}/tv/${checkDetail}/similar${API_KEY}`;
+      const result = await axios(url);
+      console.log(result.data);
+      setDataSimilarTv(result.data.results);
     };
     getDataSimilar();
     getDataDetail();
