@@ -108,11 +108,22 @@ function Carousel(props) {
                 </div>
                 <div className="carousel__content__footer">
                   <p className="carousel__content__footer__title">
-                    <strong> {item.original_title} </strong>
+                    <strong>
+                      {" "}
+                      {item.original_title
+                        ? item.original_title
+                        : item.name}{" "}
+                    </strong>
                   </p>
                   <p className="carousel__content__footer__date">
                     <strong>
-                      <p>({item.release_date})</p>
+                      <p>
+                        (
+                        {item.release_date
+                          ? item.release_date
+                          : item.first_air_date}
+                        )
+                      </p>
                     </strong>
                   </p>
                 </div>

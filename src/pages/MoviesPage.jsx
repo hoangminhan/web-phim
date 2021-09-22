@@ -17,6 +17,7 @@ function MoviesPage(props) {
 
   useEffect(() => {
     const getData = async () => {
+      document.title = "Movies";
       const url = `${URL_API}/movie/popular${API_KEY}&page=${movieFilter.page}`;
       try {
         const result = await axios(url);

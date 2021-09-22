@@ -4,18 +4,22 @@ import PropTypes from "prop-types";
 import { API_KEY, URL_API, URL_IMG } from "../constant";
 
 import Grid from "./Grid";
+import { useHistory } from "react-router";
 
 MovieList.propTypes = {
   Pagination: PropTypes.func,
 };
 
 function MovieList(props) {
+  const history = useHistory();
   const { dataMovie, title, Pagination, page } = props;
   const handlePagination = (data) => {
     props.Pagination(data);
   };
-  const handleClickDetail = (value) => {
-    props.showDetailMovie(value);
+  const handleClickDetail = (item) => {
+    console.log(title);
+    props.showDetailMovie(item.id);
+
     document.documentElement.scrollTop = 80;
   };
   return (
@@ -49,7 +53,7 @@ function MovieList(props) {
                         <p
                           style={{ color: "#000", backgroundColor: "#fff" }}
                           onClick={() => {
-                            handleClickDetail(item.id);
+                            handleClickDetail(item);
                           }}
                         >
                           <i class="bx bxs-right-arrow"></i>

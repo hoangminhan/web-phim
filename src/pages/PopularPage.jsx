@@ -48,13 +48,14 @@ function PopularPage(props) {
   };
 
   useEffect(() => {
+    document.title = "New And Title";
     const getData = async () => {
       const url = `${URL_API}/movie/upcoming${API_KEY}&page=${filterMoviePopular.page}`;
       const result = await axios(url);
       setDataMoviePopular(result.data.results);
     };
     const getDataTvShow = async () => {
-      const url = `${URL_API}/tv/latest${API_KEY}`;
+      const url = `${URL_API}/tv/popular${API_KEY}&page=2`;
       const result = await axios(url);
       setDataTvShowPopular(result.data.results);
     };
@@ -104,7 +105,7 @@ function PopularPage(props) {
               showDetailMovie={handleShowDetailMovie}
             />
             <Carousel
-              dataCarousel={dataMoviePopular}
+              dataCarousel={dataTvShowPopular}
               title="Tv Shows Popular"
               settings={settings}
               handleClickCarousel={handleClickCarousel}

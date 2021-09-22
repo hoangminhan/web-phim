@@ -15,6 +15,11 @@ function SimilarMovie(props) {
   }
   return (
     <div className="similar__movie">
+      <h2
+        style={{ color: "#fff", paddingBottom: "32px", letterSpacing: "1px" }}
+      >
+        More Like This
+      </h2>
       <Grid col={4} smCol={1} mdCol={2} gap={15}>
         {dataSimilar &&
           dataSimilar.map((item, index) => {

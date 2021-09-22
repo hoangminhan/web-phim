@@ -15,6 +15,7 @@ function ShowPage(props) {
   const [filterTvShow, setFilterTvShow] = useState({ page: 1 });
 
   useEffect(() => {
+    document.title = "Tv Shows";
     const url = `${URL_API}/tv/top_rated${API_KEY}&page=${filterTvShow.page}`;
     const getData = async () => {
       const result = await axios(url);
