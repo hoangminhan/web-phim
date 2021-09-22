@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Banner from "../component/Banner";
 import ModalDetail from "../component/common/ModalDetail";
 import MovieList from "../component/MovieList";
 import { API_KEY, URL_API } from "../constant";
@@ -64,6 +65,7 @@ function MoviesPage(props) {
   };
   return (
     <div className="main">
+      <Banner />
       <div className="content__movie">
         <div className="container">
           <div className="content__movie__popular">

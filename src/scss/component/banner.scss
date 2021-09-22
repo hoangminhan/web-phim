@@ -1,0 +1,10 @@
+.banner__content {
+  position: relative;
+  border-bottom: 6px solid #222222;
+
+  &__image {
+    img {
+      display: block;
+    }
+  }
+}

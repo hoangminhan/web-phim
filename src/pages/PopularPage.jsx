@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Banner from "../component/Banner";
 import Carousel from "../component/Carousel";
 import ModalDetail from "../component/common/ModalDetail";
 import ModalDetailTv from "../component/ModalDetailTv";
@@ -113,6 +114,7 @@ function PopularPage(props) {
 
   return (
     <div className="main">
+      <Banner />
       <div className="content__new">
         <div className="container">
           <div className="content__new__upcoming">

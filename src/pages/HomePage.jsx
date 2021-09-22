@@ -7,6 +7,7 @@ import MovieList from "../component/MovieList";
 import SimilarMovie from "../component/SimilarMovie";
 import ModalDetail from "../component/common/ModalDetail";
 import ModalDetailTv from "../component/ModalDetailTv";
+import Banner from "../component/Banner";
 
 HomePage.propTypes = {};
 
@@ -143,6 +144,7 @@ function HomePage(props) {
 
   return (
     <div className="main">
+      <Banner />
       <div className="content__home">
         <div className="container">
           <div className="content__home__popular">

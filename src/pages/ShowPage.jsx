@@ -4,6 +4,7 @@ import { API_KEY, URL_API } from "../constant";
 import axios from "axios";
 import MovieList from "../component/MovieList";
 import ModalDetail from "../component/common/ModalDetail";
+import Banner from "../component/Banner";
 
 ShowPage.propTypes = {};
 
@@ -50,6 +51,7 @@ function ShowPage(props) {
   };
   return (
     <div className="main">
+      <Banner />
       <div className="content__tv">
         <div className="container">
           <div className="content__tv__popular">

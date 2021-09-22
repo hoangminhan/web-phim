@@ -22,6 +22,9 @@ function Header(props) {
     <header className="header" ref={headerShrink}>
       <div className="container">
         <div className="header__content">
+          <div className="header__content__mobile">
+            <i className="header__content__mobile__image bx bx-menu"></i>
+          </div>
           <div className="header__content__logo">
             <Link to="/">
               <img src={logo} alt="" />

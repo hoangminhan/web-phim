@@ -82,11 +82,11 @@ img {
   // margin-bottom: 2rem;
 
   @include tablet {
-    margin-top: calc(#{$header-tablet-height} + 20px);
+    margin-top: calc(#{$header-tablet-height});
   }
 
   @include mobile {
-    margin-top: calc(#{$header-mobile-height} + 10px);
+    margin-top: calc(#{$header-mobile-height});
   }
 }
 

@@ -34,6 +34,19 @@
   &__content {
     @include flex(center, space-between);
 
+    &__mobile {
+      display: none;
+      color: #fff;
+
+      @include tablet {
+        display: block;
+      }
+
+      &__image {
+        font-size: 2rem;
+      }
+    }
+
     &__logo {
       flex: 1;
     }
