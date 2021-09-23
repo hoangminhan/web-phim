@@ -4,6 +4,10 @@
   color: $txt-white;
   background-color: $main-bg;
 
+  @include mobile {
+    text-align: center;
+  }
+
   &__content {
     &__title {
       padding-bottom: 24px;
@@ -44,6 +48,10 @@
         height: 53px;
         width: 75%;
 
+        @include mobile {
+          width: 100%;
+        }
+
         &__input input {
           padding: 12px;
           padding-left: 40px;
@@ -63,16 +71,23 @@
             top: 50%;
             left: 10px;
             transform: translateY(-50%);
+
+            @include mobile {
+              left: initial;
+            }
           }
 
           &-arrow {
             position: absolute;
-            right: 0;
             font-size: 1.6rem;
             color: #000;
             top: 50%;
             right: 10px;
             transform: translateY(-50%);
+
+            @include tablet {
+              display: none;
+            }
           }
 
           &-input:focus ~ &-select {
@@ -88,6 +103,10 @@
           left: 0;
           right: 2px;
           display: none;
+
+          @include tablet {
+            width: 83.5%;
+          }
           li {
             color: #000;
             padding-left: 40px;

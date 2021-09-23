@@ -7,13 +7,6 @@ import banner3 from "../assets/images/banner3.jpg";
 Banner.propTypes = {};
 
 function Banner(props) {
-  const [data, setData] = useState();
-  //   useEffect(()=>{
-
-  //   },[])
-  setInterval(() => {
-    setData();
-  }, 1000);
   return (
     <div className="banner__content">
       <div className="banner__content__image">

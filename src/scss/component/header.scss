@@ -33,17 +33,22 @@
 
   &__content {
     @include flex(center, space-between);
+    @include tablet {
+    }
 
     &__mobile {
       display: none;
       color: #fff;
+      @include tablet {
+        flex: 1;
+      }
 
       @include tablet {
         display: block;
       }
 
       &__image {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
 
@@ -53,14 +58,43 @@
 
     &__menu {
       flex: 3;
+      @include tablet {
+        flex: 0;
+      }
 
       ul {
         display: flex;
         justify-content: flex-start;
         font-size: 1.5rem;
+
+        @include tablet {
+          flex-direction: column;
+          position: absolute;
+          top: 69px;
+          left: 0px;
+          padding: 10px 30px;
+          height: 100vh;
+          background-color: #141414;
+          transform: translateX(-100%);
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.4s ease;
+        }
+
+        @include mobile {
+          top: 40px;
+        }
+      }
+      ul.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
       }
       &__item ~ &__item {
         margin-left: 30px;
+        @include tablet {
+          margin-left: 0;
+        }
       }
     }
 
@@ -77,7 +111,7 @@
         padding-left: 20%;
 
         border-radius: 3px;
-
+        align-items: center;
         &::-webkit-input-placeholder {
           color: #fff;
         }

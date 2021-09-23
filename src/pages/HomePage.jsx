@@ -92,6 +92,7 @@ function HomePage(props) {
     // dots: true,
     infinite: true,
     speed: 500,
+    arrows: false,
     slidesToShow: 5,
     slidesToScroll: 5,
     responsive: [

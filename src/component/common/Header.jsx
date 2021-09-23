@@ -18,12 +18,29 @@ function Header(props) {
     });
   }, []);
 
+  // handle toggle Menu
+  const [checkToggle, setCheckToggle] = useState(false);
+  const handleToggleNav = (data) => {
+    const navElement = document.querySelector(".nav__bar");
+
+    if (data === true) {
+      navElement.classList.add("active");
+      setCheckToggle(!checkToggle);
+    } else {
+      navElement?.classList.remove("active");
+      setCheckToggle(!checkToggle);
+    }
+  };
+
   return (
     <header className="header" ref={headerShrink}>
       <div className="container">
         <div className="header__content">
           <div className="header__content__mobile">
-            <i className="header__content__mobile__image bx bx-menu"></i>
+            <i
+              className="header__content__mobile__image bx bx-menu"
+              onClick={() => handleToggleNav(!checkToggle)}
+            ></i>
           </div>
           <div className="header__content__logo">
             <Link to="/">

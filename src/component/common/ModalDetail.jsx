@@ -6,8 +6,7 @@ import Iframe from "react-iframe";
 import { API_KEY, URL_API, URL_IMG_BIG } from "../../constant";
 import getTypeFilm from "../../ultils/getType";
 import SimilarMovie from "../SimilarMovie";
-import loading from "../../assets/images/loading.jpg";
-import loading1 from "../../assets/images/loading1.png";
+import loadingVideo from "../../assets/images/loadingvideo.jpg";
 
 ModalDetail.propTypes = {};
 
@@ -50,9 +49,7 @@ function ModalDetail(props) {
     try {
       const url = `${URL_API}/${type}/${checkDetail}/videos${API_KEY}`;
       const result = await axios(url);
-      console.log("result.success.success", result);
       const index = result?.data?.results.length;
-      debugger;
       if (index === 0) {
         getVideoTv();
       } else {
@@ -66,7 +63,6 @@ function ModalDetail(props) {
 
   useEffect(() => {
     const { location } = history;
-    console.log(location);
     if (location.pathname == "/tv-show") {
       setType("tv");
     } else if (location.pathname == "/movies") {
@@ -120,7 +116,7 @@ function ModalDetail(props) {
                   src={
                     dataDetail?.backdrop_path
                       ? `${URL_IMG_BIG}${dataDetail?.backdrop_path}`
-                      : loading1
+                      : loadingVideo
                   }
                   alt=""
                   style={{ width: "100%" }}
@@ -170,6 +166,7 @@ function ModalDetail(props) {
                     </p>
                   </div>
                   <p className="modal__detail__content__item__overview">
+                    <span style={{ paddingRight: "10px" }}>Overview:</span>
                     {dataDetail?.overview}
                   </p>
                 </div>

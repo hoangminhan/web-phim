@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 Menu.propTypes = {};
 
 const menus = [
@@ -46,7 +46,7 @@ const MenuLink = ({ label, to, activeMenu }) => {
 
 function Menu(props) {
   return (
-    <ul>
+    <ul className="nav__bar">
       {menus &&
         menus.map((item, index) => {
           return (
