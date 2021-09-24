@@ -10,23 +10,7 @@ function Carousel(props) {
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDisLike, setToggleDisLike] = useState(false);
   const activeRef = useRef(null);
-  // const handleClick = (e) => {
-  //   // activeRef.current.classList.toggle("active");
-  //   const receive = e;
-  //   if (receive === "play") {
-  //     // setToggleClass(!toggleClass);
-  //     // setToggleDisLike(false);
-  //     // setToggleLike(false);
-  //   } else if (receive === "like") {
-  //     setToggleLike(!toggleLike);
-  //     setToggleDisLike(false);
-  //     setToggleClass(false);
-  //   } else {
-  //     setToggleLike(false);
-  //     setToggleDisLike(!toggleDisLike);
-  //     setToggleClass(false);
-  //   }
-  // };
+
   const handleClick = (data) => {
     props.handleClickCarousel(data);
   };

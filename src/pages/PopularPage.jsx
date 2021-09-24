@@ -72,12 +72,10 @@ function PopularPage(props) {
         const url = `${URL_API}/movie/${checkDetail}${API_KEY}`;
         const result = await axios(url);
         setDataDetail(result.data);
-        console.log(result.data);
       };
       const getDataSimilar = async () => {
         const url = `${URL_API}/movie/${checkDetail}/similar${API_KEY}`;
         const result = await axios(url);
-        console.log(result.data);
         setDataSimilar(result.data.results);
       };
       getDataSimilar();

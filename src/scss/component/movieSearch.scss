@@ -1,0 +1,47 @@
+.header__content__search__history {
+  &__title {
+    color: $txt-white;
+    padding: 24px 24px;
+
+    letter-spacing: 1px;
+    font-weight: 500;
+    border-bottom: solid 1px #ccc;
+  }
+  &__list {
+    &__item {
+      padding: 24px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      cursor: pointer;
+
+      &__content {
+        color: $txt-white;
+        flex: 2;
+      }
+
+      &__play {
+        color: $txt-white;
+        font-size: 2rem;
+        flex: 1;
+        padding-left: 5px;
+        text-align: right;
+        cursor: pointer;
+      }
+
+      &__image {
+        flex: 2;
+        img {
+        }
+      }
+    }
+    &__item:hover {
+      background-color: #ccc;
+      //   padding-left: 0;
+      //   padding-right: 0;
+    }
+    &__item + &__item {
+      padding-top: 12px;
+    }
+  }
+}

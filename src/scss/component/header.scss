@@ -9,7 +9,7 @@
   z-index: 99;
 
   background-color: #0b0b0b;
-  transition: height 0.4s ease;
+  // transition: height 0.3s ease-in;
 
   @include tablet {
     height: $header-tablet-height;
@@ -21,6 +21,14 @@
 
   &.shrink {
     height: $header-shrink-height;
+
+    // &__content {
+    //   &__search {
+    //     &__history {
+    //       top: $header-shrink-height;
+    //     }
+    //   }
+    // }
 
     @include tablet {
       height: $header-tablet-height;
@@ -124,19 +132,44 @@
         }
 
         @include mobile {
-          width: 100%;
+          // width: 100%;
           display: none;
+          position: absolute;
+          right: -10px;
+          top: 20px;
         }
       }
-      // &__history {
-      //   position: fixed;
-      //   top: $header-height;
-      //   left: 0;
-      //   right: 0;
-      //   background-color: #fff;
-      // }
 
-      i {
+      &__input:focus ~ &__history {
+        display: block;
+      }
+      &__history {
+        position: fixed;
+        top: $header-height;
+        left: 70%;
+        right: 0;
+        height: 90vh;
+        bottom: 0;
+        background-color: #111111;
+        display: none;
+        overflow: scroll;
+
+        @include tablet {
+          left: 50%;
+          top: $header-tablet-height;
+          height: 90vh;
+        }
+        @include mobile {
+          top: 77px;
+          left: 0;
+          height: 100vh;
+        }
+      }
+      &__history::-webkit-scrollbar {
+        display: none;
+      }
+
+      &__icon {
         cursor: pointer;
         font-size: 2rem;
         color: #fff;
@@ -148,13 +181,6 @@
         @include mobile {
           right: 0;
           left: initial;
-        }
-      }
-
-      @include mobile {
-        i:hover &__input {
-          // color: red;
-          display: block;
         }
       }
     }

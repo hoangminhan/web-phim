@@ -3,6 +3,20 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import logo from "../../assets/images/logo.png";
 import Menu from "./../Menu";
+import { API_KEY, URL_IMG, URL_SEARCH } from "../../constant";
+import axios from "axios";
+import MovieSearch from "../MovieSearch";
+
+const getFilm = (data) => {
+  const result = data.map((item, index) => {
+    if (index < 10) {
+      return item;
+    }
+  });
+  return result.filter((item) => {
+    return item !== undefined;
+  });
+};
 
 function Header(props) {
   const [checkClick, setCheckClick] = useState(false);
@@ -10,23 +24,45 @@ function Header(props) {
   const [dataInput, setDataInput] = useState("");
   const [checkToggle, setCheckToggle] = useState(false);
   const history = useHistory();
-  const title = document.title;
+  const [dataSearch, setDataSearch] = useState();
+  const [filterSearch, setFilterSearch] = useState();
+  const [checkScroll, setCheckScroll] = useState(false);
 
-  console.log(history);
+  const headerElement = document.querySelector(".header");
 
   useEffect(() => {
+    const getData = async () => {
+      const url = `${URL_SEARCH}${API_KEY}&language=en-US&query=${
+        filterSearch ? filterSearch : "a"
+      }&page=1&include_adult=false`;
+      try {
+        const result = await axios(url);
+        setDataSearch(getFilm(result.data.results));
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    getData();
+  }, [filterSearch]);
+  console.log(dataSearch);
+  useEffect(() => {
+    const searchElement = document.querySelector(
+      ".header__content__search__history"
+    );
     window.addEventListener("scroll", () => {
       if (
         document.body.scrollTop > 70 ||
         document.documentElement.scrollTop > 70
       ) {
         headerShrink.current.classList.add("shrink");
+        searchElement.style.top = "64px";
       } else {
         headerShrink.current.classList.remove("shrink");
+        searchElement.style.top = "130px";
       }
     });
     return () => {
-      headerShrink.current.classList.remove("shrink");
+      window.removeEventListener("scroll");
     };
   }, []);
 
@@ -49,11 +85,6 @@ function Header(props) {
     if (data == true) {
       const styles = {
         display: "block",
-        paddingLeft: "2px",
-        position: "absolute",
-        top: "20px",
-        right: 0,
-        left: "10px",
       };
 
       Object.assign(inputElement.style, styles);
@@ -62,10 +93,6 @@ function Header(props) {
       inputElement.style.display = "none";
       setCheckClick(!checkClick);
     }
-  };
-  const handleChange = (e) => {
-    const data = e.target.value;
-    setDataInput(data);
   };
 
   return (
@@ -87,21 +114,27 @@ function Header(props) {
             <Menu />
           </div>
           <div className="header__content__search">
-            <input
-              type="text"
-              className="header__content__search__input"
-              placeholder="Tìm kiếm phim..."
-              name="dataInput"
-              value={dataInput}
-              onChange={handleChange}
-            />
-            {/* <ul className="header__content__search__history">abc</ul> */}
             <i
               className="header__content__search__icon bx bx-search"
               onClick={() => {
                 handleDisplay(!checkClick);
               }}
             ></i>
+            <input
+              type="text"
+              className="header__content__search__input"
+              placeholder="Tìm kiếm phim..."
+              name="filterSearch"
+              value={filterSearch}
+              onChange={(e) => {
+                console.log(e.target.value);
+                const data = e.target.value;
+                setFilterSearch(data);
+              }}
+            />
+            <div className="header__content__search__history">
+              <MovieSearch dataSearch={dataSearch} />
+            </div>
           </div>
         </div>
       </div>
