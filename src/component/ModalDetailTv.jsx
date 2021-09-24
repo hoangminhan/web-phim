@@ -77,7 +77,7 @@ function ModalDetailTv(props) {
       <div className="overlay__modal">
         <div className={checkDetail ? "modal__detail active" : "modal__detail"}>
           <div className="modal__detail__icon" onClick={handleClickModal}>
-            <i class="bx bx-x"></i>
+            <i className="bx bx-x"></i>
           </div>
 
           {dataVideo ? (
@@ -119,18 +119,18 @@ function ModalDetailTv(props) {
                       onClick={() => handleDetail(dataDetail)}
                     >
                       <button>
-                        <i class="bx bx-play"></i> <span>Play</span>
+                        <i className="bx bx-play"></i> <span>Play</span>
                       </button>
                     </div>
                     <div className="modal__detail__image__header__content__icon">
                       <p className="modal__detail__image__header__content__icon__item">
-                        <i class="bx bx-plus"></i>
+                        <i className="bx bx-plus"></i>
                       </p>
                       <p className="modal__detail__image__header__content__icon__item">
-                        <i class="bx bx-like"></i>
+                        <i className="bx bx-like"></i>
                       </p>
                       <p className="modal__detail__image__header__content__icon__item">
-                        <i class="bx bx-dislike"></i>
+                        <i className="bx bx-dislike"></i>
                       </p>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ function ModalDetailTv(props) {
                   <div className="modal__detail__content__item__content">
                     <div className="modal__detail__content__item__rate">
                       <p>{dataDetail?.vote_average}</p>
-                      <i class="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
                     </div>
                     <p className="modal__detail__content__item__date">
                       {dataDetail?.release_date}

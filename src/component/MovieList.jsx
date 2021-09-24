@@ -56,16 +56,16 @@ function MovieList(props) {
                             handleClickDetail(item);
                           }}
                         >
-                          <i class="bx bxs-right-arrow"></i>
+                          <i className="bx bxs-right-arrow"></i>
                         </p>
                         <p>
-                          <i class="bx bx-like"></i>
+                          <i className="bx bx-like"></i>
                         </p>
                         <p>
-                          <i class="bx bx-dislike"></i>
+                          <i className="bx bx-dislike"></i>
                         </p>
                         <p>
-                          <i class="bx bx-plus"></i>
+                          <i className="bx bx-plus"></i>
                         </p>
                       </div>
                     </div>
@@ -84,11 +84,11 @@ function MovieList(props) {
                     <div className="list__movie__item__hover__content__item">
                       <div className="list__movie__item__hover__content__item__rate">
                         <p>
-                          <i class="bx bxs-star"></i>
+                          <i className="bx bxs-star"></i>
                           {item.vote_average}
                         </p>
                         <p style={{ marginLeft: "auto" }}>
-                          <i class="bx bxs-heart"></i>
+                          <i className="bx bxs-heart"></i>
                           {item.vote_count}
                         </p>
                       </div>
@@ -109,7 +109,10 @@ function MovieList(props) {
               handlePagination(data);
             }}
           >
-            <i class="bx bxs-left-arrow" style={{ paddingRight: "10px" }}></i>
+            <i
+              className="bx bxs-left-arrow"
+              style={{ paddingRight: "10px" }}
+            ></i>
             Previous
           </button>
           <button
@@ -120,7 +123,10 @@ function MovieList(props) {
             }}
           >
             Next
-            <i class="bx bxs-right-arrow" style={{ paddingLeft: "10px" }}></i>
+            <i
+              className="bx bxs-right-arrow"
+              style={{ paddingLeft: "10px" }}
+            ></i>
           </button>
         </div>
       )}

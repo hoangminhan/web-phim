@@ -38,7 +38,7 @@ function SimilarMovie(props) {
                     className="similar__movie__item__image__play"
                     onClick={() => handlePlay(item)}
                   >
-                    <i class="bx bx-play"></i>
+                    <i className="bx bx-play"></i>
                   </p>
                 </div>
                 <div className="similar__movie__item__content">
@@ -48,7 +48,7 @@ function SimilarMovie(props) {
                     </div>
                     <div className="similar__movie__item__content__item__content">
                       <p className="similar__movie__item__content__item__content-rate">
-                        <i class="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
                         <p>{item.vote_average}</p>
                       </p>
                       <p className="similar__movie__item__content__item__content-date">

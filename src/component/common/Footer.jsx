@@ -29,26 +29,26 @@ function Footer(props) {
       <div className="container">
         <div className="footer__content">
           <span className="footer__content__title">
-            <Link>Bạn có câu hỏi? Liên hệ với chúng tôi</Link>
+            <Link to="#">Bạn có câu hỏi? Liên hệ với chúng tôi</Link>
           </span>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
             <ul className="footer__content__item">
               <li className="footer__content__item__question">
-                <Link>Câu hỏi thường gặp</Link>
+                <Link to="#">Câu hỏi thường gặp</Link>
               </li>
               <li className="footer__content__item__question">
-                <Link>Quan hệ với nhà đầu tư</Link>
+                <Link to="#">Quan hệ với nhà đầu tư</Link>
               </li>
               <li className="footer__content__item__question">
-                <Link>Quyền riêng tư</Link>
+                <Link to="#">Quyền riêng tư</Link>
               </li>
               <li className="footer__content__item__question footer__content__item__question--padding">
-                <Link> Kiểm tra tốc độ</Link>
+                <Link to="#"> Kiểm tra tốc độ</Link>
               </li>
 
               <div className="footer__content__item__language">
                 <div className="footer__content__item__language__input">
-                  <i class="bx bx-basketball footer__content__item__language__input-icon"></i>
+                  <i className="bx bx-basketball footer__content__item__language__input-icon"></i>
                   <input
                     type="text"
                     placeholder="Tiếng Việt"
@@ -58,48 +58,48 @@ function Footer(props) {
                     <li>Tiếng Việt</li>
                     <li>Tiếng Anh</li>
                   </ul>
-                  <i class="bx bxs-down-arrow footer__content__item__language__input-arrow"></i>
+                  <i className="bx bxs-down-arrow footer__content__item__language__input-arrow"></i>
                 </div>
               </div>
             </ul>
             <ul className="footer__content__item">
               <li className="footer__content__item__info">
-                <Link> Trung tâm hỗ trợ</Link>
+                <Link to="#"> Trung tâm hỗ trợ</Link>
               </li>
               <li className="footer__content__item__info">
-                <Link> Việc làm</Link>
+                <Link to="#"> Việc làm</Link>
               </li>
               <li className="footer__content__item__info">
-                <Link> Tuỳ chọn cookie</Link>
+                <Link to="#"> Tuỳ chọn cookie</Link>
               </li>
               <li className="footer__content__item__info">
-                <Link> Thông báo pháp lý</Link>
+                <Link to="#"> Thông báo pháp lý</Link>
               </li>
             </ul>
             <ul className="footer__content__item">
               <li className="footer__content__item__account">
-                <Link>Tài khoản</Link>
+                <Link to="#">Tài khoản</Link>
               </li>
               <li className="footer__content__item__account">
-                <Link>Các cách xem</Link>
+                <Link to="#">Các cách xem</Link>
               </li>
               <li className="footer__content__item__account">
-                <Link>Thông tin doanh nghiệp </Link>
+                <Link to="#">Thông tin doanh nghiệp </Link>
               </li>
               <li className="footer__content__item__account">
-                <Link>Chỉ có trên Netflix </Link>
+                <Link to="#">Chỉ có trên Netflix </Link>
               </li>
             </ul>
 
             <ul className="footer__content__item">
               <li className="footer__content__item__contact">
-                <Link>Trung tâm đa phương tiện</Link>
+                <Link to="#">Trung tâm đa phương tiện</Link>
               </li>
               <li className="footer__content__item__contact">
-                <Link>Điều khoản sử dụng</Link>
+                <Link to="#">Điều khoản sử dụng</Link>
               </li>
               <li className="footer__content__item__contact">
-                <Link>Liên hệ với chúng tôi</Link>
+                <Link to="#">Liên hệ với chúng tôi</Link>
               </li>
               <div className="footer__content__item__image">
                 <img src={logo} alt="" />
@@ -111,7 +111,7 @@ function Footer(props) {
 
       <div className="footer__backtop" ref={backTop}>
         <p className="footer__backtop__icon" onClick={handleBackTop}>
-          <i class="bx bxs-up-arrow-circle"></i>
+          <i className="bx bxs-up-arrow-circle"></i>
         </p>
       </div>
     </footer>

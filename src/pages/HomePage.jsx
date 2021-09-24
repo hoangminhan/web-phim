@@ -132,7 +132,7 @@ function HomePage(props) {
 
   return (
     <div className="main">
-      <Banner />
+      {/* <Banner /> */}
       <div className="content__home">
         <div className="container">
           <div className="content__home__popular">

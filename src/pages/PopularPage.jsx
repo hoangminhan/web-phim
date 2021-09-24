@@ -118,7 +118,7 @@ function PopularPage(props) {
 
   return (
     <div className="main">
-      <Banner />
+      {/* <Banner /> */}
       <div className="content__new">
         <div className="container">
           <div className="content__new__upcoming">

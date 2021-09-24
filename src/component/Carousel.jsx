@@ -56,13 +56,13 @@ function Carousel(props) {
                   <div className="carousel__content__item__header">
                     <div className="carousel__content__item__header__content">
                       <p className="carousel__content__item__header__content__evaluate">
-                        <i class="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
                         <span>{item.vote_average}</span>
                       </p>
                     </div>
                     <div className="carousel__content__item__header__content">
                       <p className="carousel__content__item__header__content__love">
-                        <i class="bx bxs-heart"></i>
+                        <i className="bx bxs-heart"></i>
                         <span>{item.vote_count}</span>
                       </p>
                     </div>
@@ -79,7 +79,7 @@ function Carousel(props) {
                       onClick={() => handleClick(item.id)}
                     >
                       <p className="carousel__content__item__footer__item--play">
-                        <i class="bx bx-right-arrow"></i>
+                        <i className="bx bx-right-arrow"></i>
                       </p>
                     </div>
                     <div
@@ -90,7 +90,7 @@ function Carousel(props) {
                       }
                     >
                       <p className="carousel__content__item__footer__item--play">
-                        <i class="bx bx-like"></i>
+                        <i className="bx bx-like"></i>
                       </p>
                     </div>
                     <div
@@ -101,7 +101,7 @@ function Carousel(props) {
                       }
                     >
                       <p className="carousel__content__item__footer__item--play">
-                        <i class="bx bx-dislike"></i>
+                        <i className="bx bx-dislike"></i>
                       </p>
                     </div>
                   </div>

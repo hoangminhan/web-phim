@@ -10,8 +10,9 @@ function Header(props) {
   const [dataInput, setDataInput] = useState("");
   const [checkToggle, setCheckToggle] = useState(false);
   const history = useHistory();
-  const { location } = history;
-  console.log("location", history.location);
+  const title = document.title;
+
+  console.log(history);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -24,6 +25,9 @@ function Header(props) {
         headerShrink.current.classList.remove("shrink");
       }
     });
+    return () => {
+      headerShrink.current.classList.remove("shrink");
+    };
   }, []);
 
   // handle toggle Menu
@@ -91,8 +95,9 @@ function Header(props) {
               value={dataInput}
               onChange={handleChange}
             />
+            {/* <ul className="header__content__search__history">abc</ul> */}
             <i
-              class="header__content__search__icon bx bx-search"
+              className="header__content__search__icon bx bx-search"
               onClick={() => {
                 handleDisplay(!checkClick);
               }}

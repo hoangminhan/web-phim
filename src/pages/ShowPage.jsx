@@ -53,7 +53,7 @@ function ShowPage(props) {
   };
   return (
     <div className="main">
-      <Banner />
+      {/* <Banner /> */}
       <div className="content__tv">
         <div className="container">
           <div className="content__tv__popular">
