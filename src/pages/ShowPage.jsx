@@ -25,20 +25,22 @@ function ShowPage(props) {
     getData();
   }, [filterTvShow]);
   useEffect(() => {
-    const getDataDetail = async () => {
-      const url = `${URL_API}/tv/${checkDetail}${API_KEY}`;
-      const result = await axios(url);
-      setDataDetail(result.data);
-      console.log(result.data);
-    };
-    const getDataSimilar = async () => {
-      const url = `${URL_API}/tv/${checkDetail}/similar${API_KEY}`;
-      const result = await axios(url);
-      console.log(result.data);
-      setDataSimilar(result.data.results);
-    };
-    getDataSimilar();
-    getDataDetail();
+    if (checkDetail) {
+      const getDataDetail = async () => {
+        const url = `${URL_API}/tv/${checkDetail}${API_KEY}`;
+        const result = await axios(url);
+        setDataDetail(result.data);
+        console.log(result.data);
+      };
+      const getDataSimilar = async () => {
+        const url = `${URL_API}/tv/${checkDetail}/similar${API_KEY}`;
+        const result = await axios(url);
+        console.log(result.data);
+        setDataSimilar(result.data.results);
+      };
+      getDataSimilar();
+      getDataDetail();
+    }
   }, [checkDetail]);
   const handlePagination = (page) => {
     setFilterTvShow({

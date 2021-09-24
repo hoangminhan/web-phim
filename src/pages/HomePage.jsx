@@ -4,9 +4,7 @@ import Carousel from "../component/Carousel";
 import axios from "axios";
 import { URL_API, API_KEY, URL_IMG, URL_IMG_BIG } from "../constant";
 import MovieList from "../component/MovieList";
-import SimilarMovie from "../component/SimilarMovie";
 import ModalDetail from "../component/common/ModalDetail";
-import ModalDetailTv from "../component/ModalDetailTv";
 import Banner from "../component/Banner";
 
 HomePage.propTypes = {};
@@ -64,29 +62,31 @@ function HomePage(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `${URL_API}/movie/${checkDetail}${API_KEY}`;
+    if (checkDetail) {
+      const fetchData = async () => {
+        const url = `${URL_API}/movie/${checkDetail}${API_KEY}`;
 
-      try {
-        const result = await axios(url);
-        setDataDetail(result.data);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    const fetchDataSimilar = async () => {
-      const url = `${URL_API}/movie/${checkDetail}/similar${API_KEY}`;
+        try {
+          const result = await axios(url);
+          setDataDetail(result.data);
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+      const fetchDataSimilar = async () => {
+        const url = `${URL_API}/movie/${checkDetail}/similar${API_KEY}`;
 
-      try {
-        const result = await axios(url);
-        console.log(result.data.results);
-        setDataSimilar(result.data.results);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    fetchDataSimilar();
-    fetchData();
+        try {
+          const result = await axios(url);
+          console.log(result.data.results);
+          setDataSimilar(result.data.results);
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+      fetchDataSimilar();
+      fetchData();
+    }
   }, [checkDetail]);
   const settings = {
     // dots: true,
@@ -119,20 +119,7 @@ function HomePage(props) {
       },
     ],
   };
-  const Pagination = (data) => {
-    console.log(data);
-    setFilterPopular({
-      ...filterPopular,
-      page: data,
-    });
-  };
-  const PaginationMovie = (page) => {
-    console.log(page);
-    setFilterTvShow({
-      ...filterTvShow,
-      page: page,
-    });
-  };
+
   const showDetailMovie = (data) => {
     setCheckDetail(data);
     document.documentElement.scrollTop = 0;
@@ -151,7 +138,7 @@ function HomePage(props) {
           <div className="content__home__popular">
             <Carousel
               dataCarousel={dataPopular}
-              title="Movie Popular"
+              title="# Movie Popular"
               settings={settings}
               handleClickCarousel={handleClickCarousel}
             />

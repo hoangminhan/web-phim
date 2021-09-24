@@ -13,6 +13,13 @@ function SimilarMovie(props) {
       data = [...data, dataSimilar[i]];
     }
   }
+  const handlePlay = (data) => {
+    props.moviePlay(data);
+    const modalDetail = document.querySelector(".modal__detail");
+    modalDetail.scrollTop = 0;
+    console.log(modalDetail);
+  };
+
   return (
     <div className="similar__movie">
       <h2
@@ -27,7 +34,10 @@ function SimilarMovie(props) {
               <div key={index} className="similar__movie__item">
                 <div className="similar__movie__item__image">
                   <img src={`${URL_IMG__300}${item.poster_path}`} alt="" />
-                  <p className="similar__movie__item__image__play">
+                  <p
+                    className="similar__movie__item__image__play"
+                    onClick={() => handlePlay(item)}
+                  >
                     <i class="bx bx-play"></i>
                   </p>
                 </div>

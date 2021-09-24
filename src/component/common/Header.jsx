@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import logo from "../../assets/images/logo.png";
 import Menu from "./../Menu";
 
 function Header(props) {
+  const [checkClick, setCheckClick] = useState(false);
   const headerShrink = useRef();
+  const [dataInput, setDataInput] = useState("");
+  const [checkToggle, setCheckToggle] = useState(false);
+  const history = useHistory();
+  const { location } = history;
+  console.log("location", history.location);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (
@@ -19,7 +27,6 @@ function Header(props) {
   }, []);
 
   // handle toggle Menu
-  const [checkToggle, setCheckToggle] = useState(false);
   const handleToggleNav = (data) => {
     const navElement = document.querySelector(".nav__bar");
 
@@ -30,6 +37,31 @@ function Header(props) {
       navElement?.classList.remove("active");
       setCheckToggle(!checkToggle);
     }
+  };
+  const handleDisplay = (data) => {
+    const inputElement = document.querySelector(
+      ".header__content__search__input"
+    );
+    if (data == true) {
+      const styles = {
+        display: "block",
+        paddingLeft: "2px",
+        position: "absolute",
+        top: "20px",
+        right: 0,
+        left: "10px",
+      };
+
+      Object.assign(inputElement.style, styles);
+      setCheckClick(!checkClick);
+    } else {
+      inputElement.style.display = "none";
+      setCheckClick(!checkClick);
+    }
+  };
+  const handleChange = (e) => {
+    const data = e.target.value;
+    setDataInput(data);
   };
 
   return (
@@ -55,8 +87,16 @@ function Header(props) {
               type="text"
               className="header__content__search__input"
               placeholder="Tìm kiếm phim..."
+              name="dataInput"
+              value={dataInput}
+              onChange={handleChange}
             />
-            <i class="bx bx-search"></i>
+            <i
+              class="header__content__search__icon bx bx-search"
+              onClick={() => {
+                handleDisplay(!checkClick);
+              }}
+            ></i>
           </div>
         </div>
       </div>

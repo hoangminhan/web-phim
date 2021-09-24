@@ -31,26 +31,28 @@ function MoviesPage(props) {
     getData();
   }, [movieFilter]);
   useEffect(() => {
-    const getDataSimilar = async () => {
-      const url = `${URL_API}/movie/${checkDetail}/similar${API_KEY}`;
-      try {
-        const result = await axios(url);
-        setCheckDataSimilar(result.data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const getDataDetail = async () => {
-      const url = `${URL_API}/movie/${checkDetail}${API_KEY}`;
-      try {
-        const result = await axios(url);
-        setDataDetail(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getDataSimilar();
-    getDataDetail();
+    if (checkDetail) {
+      const getDataSimilar = async () => {
+        const url = `${URL_API}/movie/${checkDetail}/similar${API_KEY}`;
+        try {
+          const result = await axios(url);
+          setCheckDataSimilar(result.data.results);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      const getDataDetail = async () => {
+        const url = `${URL_API}/movie/${checkDetail}${API_KEY}`;
+        try {
+          const result = await axios(url);
+          setDataDetail(result.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getDataSimilar();
+      getDataDetail();
+    }
   }, [checkDetail]);
 
   const Pagination = (page) => {

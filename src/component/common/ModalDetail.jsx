@@ -78,11 +78,26 @@ function ModalDetail(props) {
 
   const handleDetail = (item) => {
     const { location } = history;
+
+    console.log(location);
     const name = item.name
       ? item.name.replaceAll(" ", "-")
       : item.title.replaceAll(" ", "-");
     getVideo();
     // history.push(`${location.pathname}/${name}`);
+  };
+  const handleMoviePlay = (res) => {
+    console.log("moviePlay", res);
+
+    (async function getData() {
+      const url = `${URL_API}/movie/${res.id}/videos${API_KEY}`;
+      const result = await axios(url);
+      const index = result?.data?.results.length - 1;
+      const data = result?.data?.results[index]?.key
+        ? result?.data?.results[index]?.key
+        : "LvUu7_R5sAE";
+      setDataVideo(data);
+    })();
   };
   return (
     <>
@@ -192,7 +207,7 @@ function ModalDetail(props) {
             </>
           )}
 
-          <SimilarMovie dataSimilar={dataSimilar} />
+          <SimilarMovie dataSimilar={dataSimilar} moviePlay={handleMoviePlay} />
         </div>
       </div>
     </>

@@ -54,6 +54,13 @@
 
     &__logo {
       flex: 1;
+
+      img {
+        @include mobile {
+          width: 120px;
+          line-height: 120px;
+        }
+      }
     }
 
     &__menu {
@@ -115,15 +122,33 @@
         &::-webkit-input-placeholder {
           color: #fff;
         }
+
+        @include mobile {
+          width: 100%;
+          display: none;
+        }
       }
 
       i {
+        cursor: pointer;
         font-size: 2rem;
         color: #fff;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         left: 5%;
+
+        @include mobile {
+          right: 0;
+          left: initial;
+        }
+      }
+
+      @include mobile {
+        i:hover &__input {
+          // color: red;
+          display: block;
+        }
       }
     }
   }
