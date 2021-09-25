@@ -12,6 +12,7 @@ function MovieSearch(props) {
   const historyElement = document.querySelector(
     ".header__content__search__history"
   );
+
   console.log(historyElement);
   const handleWatch = (data) => {
     props.handleDataModal({
@@ -19,10 +20,14 @@ function MovieSearch(props) {
       id: data.id,
     });
     historyElement.style.display = "none";
+
+    const modalOverlay = document.querySelector(".overlay__modal");
+    modalOverlay.classList.add("visible");
   };
   if (inputElement) {
     inputElement.addEventListener("click", () => {
       historyElement.style.display = "block";
+
       Object.assign(historyElement.style, {
         display: "block",
         transform: "translateX(0)",

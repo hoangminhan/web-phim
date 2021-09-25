@@ -14,11 +14,13 @@ function ModalSearch(props) {
   const [video, setVideo] = useState("");
 
   const modalElement = document.querySelector(".modal__search");
+  const modalOverlay = document.querySelector(".overlay__modal");
 
   const handleCloseModal = () => {
     if (modalElement) {
       modalElement.style.display = "none";
       setVideo("");
+      modalOverlay.classList.remove("visible");
     }
   };
   const getVideo = async (id) => {
@@ -48,12 +50,15 @@ function ModalSearch(props) {
   const iconModalElement = document.querySelector(
     ".header__content__search__history__title__icon"
   );
+
   if (iconModalElement) {
     iconModalElement.addEventListener("click", () => {
       Object.assign(historyElement.style, {
         // display: "none",
         transform: "translateX(100%)",
       });
+
+      // overlayElement.style.display = "none";
       // historyElement.style.display = "none";
     });
   }

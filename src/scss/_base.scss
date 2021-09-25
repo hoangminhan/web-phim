@@ -78,7 +78,7 @@ img {
 
 .main {
   position: relative;
-  margin-top: $header-height;
+  margin-top: $header-shrink-height;
   // margin-bottom: 2rem;
 
   @include tablet {

@@ -77,14 +77,10 @@ function ModalDetail(props) {
   }, [checkDetail]);
 
   const handleDetail = (item) => {
-    const { location } = history;
-
-    console.log(location);
     const name = item.name
       ? item.name.replaceAll(" ", "-")
       : item.title.replaceAll(" ", "-");
     getVideo();
-    // history.push(`${location.pathname}/${name}`);
   };
   const handleMoviePlay = (res) => {
     console.log("moviePlay", res);

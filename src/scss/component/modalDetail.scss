@@ -10,7 +10,7 @@
   background-color: #141414;
   display: none;
   z-index: 90;
-  padding-bottom: 32px;
+  // padding-bottom: 32px;
   box-shadow: $box-shadow;
   margin-top: $header-shrink-height;
 
@@ -187,7 +187,7 @@
   width: 100%;
   height: 100%;
   display: none;
-  z-index: 100;
+  z-index: 91;
 }
 .overlay__modal.visible {
   display: block;

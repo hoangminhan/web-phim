@@ -23,21 +23,15 @@ const getFilm = (data) => {
 function Header(props) {
   const [checkClick, setCheckClick] = useState(false);
   const headerShrink = useRef();
-  const [dataInput, setDataInput] = useState("");
   const [checkToggle, setCheckToggle] = useState(false);
-  const history = useHistory();
   const [dataSearch, setDataSearch] = useState();
   const [filterSearch, setFilterSearch] = useState();
   const [dataDetail, setDataDetail] = useState();
   const [checkDetail, setCheckDetail] = useState();
   const [dataSimilar, setDataSimilar] = useState();
   const [showModal, setShowModal] = useState(false);
-
-  const [video, setVideo] = useState();
   const [type, setType] = useState("movie");
-
   const modalElement = document.querySelector(".modal__search");
-  console.log(modalElement);
 
   useEffect(() => {
     const getData = async () => {
@@ -53,27 +47,6 @@ function Header(props) {
     };
     getData();
   }, [filterSearch]);
-  useEffect(() => {
-    const searchElement = document.querySelector(
-      ".header__content__search__history"
-    );
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 70 ||
-        document.documentElement.scrollTop > 70
-      ) {
-        headerShrink.current.classList.add("shrink");
-        if (searchElement) {
-          searchElement.style.top = "64px";
-        }
-      } else {
-        headerShrink.current.classList.remove("shrink");
-        if (searchElement) {
-          searchElement.style.top = "130px";
-        }
-      }
-    });
-  }, []);
 
   // handle toggle Menu
   const handleToggleNav = (data) => {
@@ -91,6 +64,7 @@ function Header(props) {
     const inputElement = document.querySelector(
       ".header__content__search__input"
     );
+
     if (data == true) {
       const styles = {
         display: "block",
@@ -141,6 +115,19 @@ function Header(props) {
     }
   }, [checkDetail]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 70 ||
+        document.documentElement.scrollTop > 70
+      ) {
+        headerShrink.current.classList.add("shrink");
+      } else {
+        headerShrink.current.classList.remove("shrink");
+      }
+    });
+  }, []);
+
   return (
     <header className="header" ref={headerShrink}>
       <div className="container">
@@ -184,7 +171,6 @@ function Header(props) {
                 handleDataModal={handleDataModal}
               />
             </div>
-
             <ModalSearch
               // dataVideo={video}
               idMovie={checkDetail}
