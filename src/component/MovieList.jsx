@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-
-import { API_KEY, URL_API, URL_IMG } from "../constant";
-
+import { URL_IMG } from "../constant";
 import Grid from "./Grid";
-import { useHistory } from "react-router";
 
 MovieList.propTypes = {
   Pagination: PropTypes.func,
 };
 
 function MovieList(props) {
-  const history = useHistory();
   const { dataMovie, title, Pagination, page, type } = props;
   const handlePagination = (data) => {
     props.Pagination(data);
   };
   const handleClickDetail = (item) => {
-    console.log(title);
     props.showDetailMovie(item.id);
 
     document.documentElement.scrollTop = 80;

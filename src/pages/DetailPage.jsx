@@ -9,7 +9,7 @@ function DetailPage(props) {
   console.log("param", name);
   return (
     <div style={{ height: "50vh", marginTop: "130px", color: "red" }}>
-      Đây là detai
+      Đây là detail
     </div>
   );
 }

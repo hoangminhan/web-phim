@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { API_KEY, URL_API, URL_IMG_BIG } from "../constant";
 import loadingVideo from "../assets/images/loadingvideo.jpg";
 import Iframe from "react-iframe";
@@ -15,7 +14,12 @@ function ModalSearch(props) {
 
   const modalElement = document.querySelector(".modal__search");
   const modalOverlay = document.querySelector(".overlay__modal");
-
+  const historyElement = document.querySelector(
+    ".header__content__search__history"
+  );
+  const iconModalElement = document.querySelector(
+    ".header__content__search__history__title__icon"
+  );
   const handleCloseModal = () => {
     if (modalElement) {
       modalElement.style.display = "none";
@@ -44,22 +48,11 @@ function ModalSearch(props) {
     getVideo(res.id);
   };
 
-  const historyElement = document.querySelector(
-    ".header__content__search__history"
-  );
-  const iconModalElement = document.querySelector(
-    ".header__content__search__history__title__icon"
-  );
-
   if (iconModalElement) {
     iconModalElement.addEventListener("click", () => {
       Object.assign(historyElement.style, {
-        // display: "none",
         transform: "translateX(100%)",
       });
-
-      // overlayElement.style.display = "none";
-      // historyElement.style.display = "none";
     });
   }
 

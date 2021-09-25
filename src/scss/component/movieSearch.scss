@@ -43,15 +43,11 @@
 
       &__image {
         flex: 2;
-        img {
-        }
       }
     }
     &__item:hover {
       background-color: #ccc;
       color: #000;
-      //   padding-left: 0;
-      //   padding-right: 0;
     }
     &__item:hover &__item__content,
     &__item:hover &__item__play {

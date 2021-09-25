@@ -20,7 +20,6 @@ function PopularPage(props) {
   const [filterMoviePopular, setFilterMoviePopular] = useState({ page: 1 });
 
   const settings = {
-    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -66,6 +65,7 @@ function PopularPage(props) {
     getData();
     getDataTvShow();
   }, [filterMoviePopular]);
+
   useEffect(() => {
     if (checkDetail) {
       const getDataDetail = async () => {
@@ -93,19 +93,13 @@ function PopularPage(props) {
       const getDataSimilar = async () => {
         const url = `${URL_API}/tv/${checkDetail}/similar${API_KEY}`;
         const result = await axios(url);
-        console.log(result.data);
         setDataSimilarTv(result.data.results);
       };
       getDataSimilar();
       getDataDetail();
     }
   }, [checkDetail]);
-  const handlePagination = (page) => {
-    setFilterMoviePopular({
-      ...filterMoviePopular,
-      page,
-    });
-  };
+
   const handleShowDetailMovie = (id) => {
     setCheckDetail(id);
   };
@@ -116,14 +110,12 @@ function PopularPage(props) {
 
   return (
     <div className="main">
-      {/* <Banner /> */}
       <div className="content__new">
         <div className="container">
           <div className="content__new__upcoming">
             <MovieList
               dataMovie={dataMoviePopular}
               title="Movie Popular"
-              // Pagination={handlePagination}
               page={filterMoviePopular.page}
               showDetailMovie={handleShowDetailMovie}
             />

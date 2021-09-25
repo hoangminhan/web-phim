@@ -9,7 +9,6 @@ function Carousel(props) {
   const [toggleClass, setToggleClass] = useState(false);
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDisLike, setToggleDisLike] = useState(false);
-  const activeRef = useRef(null);
 
   const handleClick = (data) => {
     props.handleClickCarousel(data);
@@ -59,7 +58,6 @@ function Carousel(props) {
                           ? `carousel__content__item__footer__item active`
                           : "carousel__content__item__footer__item"
                       }
-                      // ref={activeRef}
                       onClick={() => handleClick(item.id)}
                     >
                       <p className="carousel__content__item__footer__item--play">

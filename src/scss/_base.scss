@@ -28,7 +28,6 @@ a {
   color: $txt-white;
 }
 li.active a {
-  // padding: 4px;
   opacity: 0.8;
 }
 li:hover a {
@@ -79,7 +78,6 @@ img {
 .main {
   position: relative;
   margin-top: $header-shrink-height;
-  // margin-bottom: 2rem;
 
   @include tablet {
     margin-top: calc(#{$header-tablet-height});

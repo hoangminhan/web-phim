@@ -1,10 +1,8 @@
 @import "./variable";
 @import "./mixin";
 @import "./base";
-
 @import "./component/header.scss";
 @import "./component/footer";
-
 @import "./component/homePage";
 @import "./component/moviePage";
 @import "./component/showPage";
@@ -13,7 +11,6 @@
 @import "./component/similarMovie";
 @import "./component/modalDetail.scss";
 @import "./component/banner.scss";
-
 @import "./component/popularPage.scss";
 @import "./component/movieSearch.scss";
 @import "./component/modalSearch.scss";

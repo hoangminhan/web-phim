@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { URL_IMG1 } from "../constant";
 
 MovieSearch.propTypes = {};
@@ -13,7 +13,6 @@ function MovieSearch(props) {
     ".header__content__search__history"
   );
 
-  console.log(historyElement);
   const handleWatch = (data) => {
     props.handleDataModal({
       type: data.media_type,
@@ -35,18 +34,6 @@ function MovieSearch(props) {
     });
   }
 
-  // const iconModalElement = document.querySelector(
-  //   ".header__content__search__history__title__icon"
-  // );
-  // if (iconModalElement) {
-  //   iconModalElement.addEventListener("click", () => {
-  //     Object.assign(historyElement.style, {
-  //       // display: "none",
-  //       transform: "translateX(100%)",
-  //     });
-  //     // historyElement.style.display = "none";
-  //   });
-  // }
   return (
     <>
       <h2 className="header__content__search__history__title">

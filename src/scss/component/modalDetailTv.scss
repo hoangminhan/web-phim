@@ -4,7 +4,6 @@
   left: 15%;
   right: 15%;
   bottom: 5%;
-  // height: 100%;
   overflow: scroll;
   background-color: #141414;
   display: none;
@@ -50,8 +49,6 @@
         display: flex;
         align-items: center;
 
-        &__btn:hover {
-        }
         &__btn button {
           min-width: 100px;
           padding: 2px 5px;

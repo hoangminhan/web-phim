@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { API_KEY, URL_API } from "../constant";
 import axios from "axios";
 import MovieList from "../component/MovieList";
 import ModalDetail from "../component/common/ModalDetail";
-import Banner from "../component/Banner";
 
 ShowPage.propTypes = {};
 
@@ -30,12 +28,10 @@ function ShowPage(props) {
         const url = `${URL_API}/tv/${checkDetail}${API_KEY}`;
         const result = await axios(url);
         setDataDetail(result.data);
-        console.log(result.data);
       };
       const getDataSimilar = async () => {
         const url = `${URL_API}/tv/${checkDetail}/similar${API_KEY}`;
         const result = await axios(url);
-        console.log(result.data);
         setDataSimilar(result.data.results);
       };
       getDataSimilar();
@@ -53,7 +49,6 @@ function ShowPage(props) {
   };
   return (
     <div className="main">
-      {/* <Banner /> */}
       <div className="content__tv">
         <div className="container">
           <div className="content__tv__popular">

@@ -63,14 +63,11 @@ function ModalDetailTv(props) {
   }, [checkDetail]);
 
   const handleDetail = (item) => {
-    debugger;
-    console.log("id", item.id);
     const { location } = history;
     const name = item.name
       ? item.name.replaceAll(" ", "-")
       : item.title.replaceAll(" ", "-");
     getVideo();
-    // history.push(`${location.pathname}/${name}`);
   };
   return (
     <>
@@ -95,7 +92,6 @@ function ModalDetailTv(props) {
                 top: 0,
                 left: 0,
               }}
-              // position="relative"
             />
           ) : (
             <>

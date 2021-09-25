@@ -67,7 +67,6 @@ function MoviesPage(props) {
   };
   return (
     <div className="main">
-      {/* <Banner /> */}
       <div className="content__movie">
         <div className="container">
           <div className="content__movie__popular">

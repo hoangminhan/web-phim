@@ -26,16 +26,6 @@ function ModalDetail(props) {
     setCheck(true);
   };
 
-  // const getVideo = async () => {
-  //   const url = `${URL_API}/${type}/${checkDetail}/videos${API_KEY}`;
-  //   const result = await axios(url);
-  //   const index = result?.data?.results.length - 1;
-  //   const data = result?.data?.results[index]?.key
-  //     ? result?.data?.results[index]?.key
-  //     : "LvUu7_R5sAE";
-  //   setDataVideo(data);
-  // };
-
   const getVideoTv = async () => {
     const url = `${URL_API}/tv/${checkDetail}/videos${API_KEY}`;
     const result = await axios(url);
@@ -61,6 +51,23 @@ function ModalDetail(props) {
     } catch (error) {}
   };
 
+  const handleDetail = (item) => {
+    const name = item.name
+      ? item.name.replaceAll(" ", "-")
+      : item.title.replaceAll(" ", "-");
+    getVideo();
+  };
+  const handleMoviePlay = (res) => {
+    (async function getData() {
+      const url = `${URL_API}/movie/${res.id}/videos${API_KEY}`;
+      const result = await axios(url);
+      const index = result?.data?.results.length - 1;
+      const data = result?.data?.results[index]?.key
+        ? result?.data?.results[index]?.key
+        : "LvUu7_R5sAE";
+      setDataVideo(data);
+    })();
+  };
   useEffect(() => {
     const { location } = history;
     if (location.pathname == "/tv-show") {
@@ -75,26 +82,6 @@ function ModalDetail(props) {
       modalOverlay.classList.add("visible");
     }
   }, [checkDetail]);
-
-  const handleDetail = (item) => {
-    const name = item.name
-      ? item.name.replaceAll(" ", "-")
-      : item.title.replaceAll(" ", "-");
-    getVideo();
-  };
-  const handleMoviePlay = (res) => {
-    console.log("moviePlay", res);
-
-    (async function getData() {
-      const url = `${URL_API}/movie/${res.id}/videos${API_KEY}`;
-      const result = await axios(url);
-      const index = result?.data?.results.length - 1;
-      const data = result?.data?.results[index]?.key
-        ? result?.data?.results[index]?.key
-        : "LvUu7_R5sAE";
-      setDataVideo(data);
-    })();
-  };
   return (
     <>
       <div className="overlay__modal">
@@ -118,7 +105,6 @@ function ModalDetail(props) {
                 top: 0,
                 left: 0,
               }}
-              // position="relative"
             />
           ) : (
             <>

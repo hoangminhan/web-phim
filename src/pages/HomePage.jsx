@@ -78,7 +78,6 @@ function HomePage(props) {
 
         try {
           const result = await axios(url);
-          console.log(result.data.results);
           setDataSimilar(result.data.results);
         } catch (error) {
           console.log("error", error);
@@ -89,7 +88,6 @@ function HomePage(props) {
     }
   }, [checkDetail]);
   const settings = {
-    // dots: true,
     infinite: true,
     speed: 500,
     arrows: false,
@@ -126,13 +124,11 @@ function HomePage(props) {
   };
 
   const handleClickCarousel = (id) => {
-    console.log(id);
     setCheckDetail(id);
   };
 
   return (
     <div className="main">
-      {/* <Banner /> */}
       <div className="content__home">
         <div className="container">
           <div className="content__home__popular">
