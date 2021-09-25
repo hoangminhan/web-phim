@@ -16,8 +16,9 @@ function SimilarMovie(props) {
   const handlePlay = (data) => {
     props.moviePlay(data);
     const modalDetail = document.querySelector(".modal__detail");
+    const modalSearch = document.querySelector(".modal__search");
     modalDetail.scrollTop = 0;
-    console.log(modalDetail);
+    modalSearch.scrollTop = 0;
   };
 
   return (

@@ -140,9 +140,9 @@
         }
       }
 
-      &__input:focus ~ &__history {
-        display: block;
-      }
+      // &__input:focus ~ &__history {
+      //   display: block;
+      // }
       &__history {
         position: fixed;
         top: $header-height;
@@ -151,8 +151,9 @@
         height: 90vh;
         bottom: 0;
         background-color: #111111;
-        display: none;
         overflow: scroll;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
 
         @include tablet {
           left: 50%;
@@ -171,7 +172,7 @@
 
       &__icon {
         cursor: pointer;
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #fff;
         position: absolute;
         top: 50%;

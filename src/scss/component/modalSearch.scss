@@ -1,9 +1,22 @@
-.modal__detail {
+// .modal__search {
+//   position: fixed;
+//   height: 100vh;
+//   top: 75px;
+//   left: 25%;
+//   right: 25%;
+//   background-color: #ccc;
+//   overflow: scroll;
+// }
+// .modal__search::-webkit-scrollbar {
+//   display: none;
+// }
+
+.modal__search {
   scroll-behavior: smooth;
   position: fixed;
-  top: 0;
-  left: 15%;
-  right: 15%;
+  top: 10px;
+  left: 10%;
+  right: 10%;
   bottom: 0;
   // height: 100%;
   overflow: scroll;
@@ -164,20 +177,20 @@
   }
 }
 
-.modal__detail::-webkit-scrollbar {
+.modal__search::-webkit-scrollbar {
   display: none;
 }
 
-.modal__detail::after {
+.modal__search::after {
   content: "";
   display: block;
   clear: both;
 }
-.modal__detail.active {
+.modal__search.active {
   display: block;
 }
 
-.overlay__modal {
+.overlay__modal__search {
   position: fixed;
   top: 0;
   left: 0;
@@ -189,6 +202,6 @@
   display: none;
   z-index: 100;
 }
-.overlay__modal.visible {
+.overlay__modal__search.visible {
   display: block;
 }

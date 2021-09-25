@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import logo from "../../assets/images/logo.png";
 import Menu from "./../Menu";
-import { API_KEY, URL_IMG, URL_SEARCH } from "../../constant";
+import { API_KEY, URL_API, URL_IMG, URL_SEARCH } from "../../constant";
 import axios from "axios";
 import MovieSearch from "../MovieSearch";
+import ModalDetail from "./ModalDetail";
+import ModalSearch from "../ModalSearch";
 
 const getFilm = (data) => {
   const result = data.map((item, index) => {
@@ -26,14 +28,21 @@ function Header(props) {
   const history = useHistory();
   const [dataSearch, setDataSearch] = useState();
   const [filterSearch, setFilterSearch] = useState();
-  const [checkScroll, setCheckScroll] = useState(false);
+  const [dataDetail, setDataDetail] = useState();
+  const [checkDetail, setCheckDetail] = useState();
+  const [dataSimilar, setDataSimilar] = useState();
+  const [showModal, setShowModal] = useState(false);
 
-  const headerElement = document.querySelector(".header");
+  const [video, setVideo] = useState();
+  const [type, setType] = useState("movie");
+
+  const modalElement = document.querySelector(".modal__search");
+  console.log(modalElement);
 
   useEffect(() => {
     const getData = async () => {
       const url = `${URL_SEARCH}${API_KEY}&language=en-US&query=${
-        filterSearch ? filterSearch : "a"
+        filterSearch ? filterSearch : "c"
       }&page=1&include_adult=false`;
       try {
         const result = await axios(url);
@@ -44,7 +53,6 @@ function Header(props) {
     };
     getData();
   }, [filterSearch]);
-  console.log(dataSearch);
   useEffect(() => {
     const searchElement = document.querySelector(
       ".header__content__search__history"
@@ -61,9 +69,6 @@ function Header(props) {
         searchElement.style.top = "130px";
       }
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
   }, []);
 
   // handle toggle Menu
@@ -94,6 +99,43 @@ function Header(props) {
       setCheckClick(!checkClick);
     }
   };
+  const handleDataModal = (data) => {
+    console.log("dataHeader", data);
+    setCheckDetail(data.id);
+    setType(data.type);
+    setShowModal(true);
+    if (modalElement) {
+      modalElement.style.display = "block";
+    }
+  };
+
+  useEffect(() => {
+    if (checkDetail) {
+      const url = `${URL_API}/${type}/${checkDetail}${API_KEY}`;
+      const urlSimliar = `${URL_API}/${type}/${checkDetail}/similar${API_KEY}`;
+
+      const getDataDetail = async () => {
+        try {
+          const response = await axios.get(url);
+          setDataDetail(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      const getDataSimilar = async () => {
+        try {
+          const response = await axios.get(urlSimliar);
+          console.log(response);
+          setDataSimilar(response.data.results);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getDataDetail();
+      getDataSimilar();
+    }
+  }, [checkDetail]);
 
   return (
     <header className="header" ref={headerShrink}>
@@ -133,8 +175,19 @@ function Header(props) {
               }}
             />
             <div className="header__content__search__history">
-              <MovieSearch dataSearch={dataSearch} />
+              <MovieSearch
+                dataSearch={dataSearch}
+                handleDataModal={handleDataModal}
+              />
             </div>
+
+            <ModalSearch
+              // dataVideo={video}
+              idMovie={checkDetail}
+              dataDetail={dataDetail}
+              dataSimilar={dataSimilar}
+              type={type}
+            />
           </div>
         </div>
       </div>
