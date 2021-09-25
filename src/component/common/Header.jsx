@@ -63,10 +63,14 @@ function Header(props) {
         document.documentElement.scrollTop > 70
       ) {
         headerShrink.current.classList.add("shrink");
-        searchElement.style.top = "64px";
+        if (searchElement) {
+          searchElement.style.top = "64px";
+        }
       } else {
         headerShrink.current.classList.remove("shrink");
-        searchElement.style.top = "130px";
+        if (searchElement) {
+          searchElement.style.top = "130px";
+        }
       }
     });
   }, []);

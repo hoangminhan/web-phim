@@ -45,7 +45,7 @@ function MovieSearch(props) {
   return (
     <>
       <h2 className="header__content__search__history__title">
-        <i class="header__content__search__history__title__icon bx bxs-exit"></i>
+        <i className="header__content__search__history__title__icon bx bxs-exit"></i>
         <span>Tìm kiếm nhiều nhất</span>
       </h2>
       <ul className="header__content__search__history__list">
