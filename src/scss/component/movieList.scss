@@ -106,6 +106,10 @@
   &__pagination {
     text-align: center;
 
+    @include tablet {
+      margin-top: 64px;
+    }
+
     &__button {
       min-width: 100px;
       padding: 10px;

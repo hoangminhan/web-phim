@@ -5,6 +5,74 @@
   &__image {
     img {
       display: block;
+      opacity: 0.9;
+      width: 100%;
+      background-image: linear-gradient(77deg, #00000099 25%, #00000000 85%);
+    }
+  }
+
+  &__body {
+    position: absolute;
+    bottom: 30%;
+    left: 5%;
+    right: 50%;
+    color: #fff;
+
+    @include tablet {
+      bottom: 20%;
+    }
+    @include mobile {
+      bottom: 10%;
+    }
+
+    &__title {
+      padding-bottom: 12px;
+      text-shadow: 0px 4px 4px #000;
+
+      @include mobile {
+        font-size: 1rem;
+      }
+    }
+    &__overview {
+      font-size: 1.4rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+      text-shadow: 0px 4px 4px #000;
+
+      @include mobile {
+        font-size: 1.2rem;
+        -webkit-line-clamp: 2;
+      }
+    }
+
+    &__action {
+      display: flex;
+      padding-top: 24px;
+
+      &__play {
+        background-color: #000;
+        color: #fff;
+        font-size: 1.3rem;
+        padding: 8px 24px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        cursor: pointer;
+
+        @include mobile {
+          padding: 4px 24px;
+        }
+
+        i {
+          font-size: 2rem;
+
+          @include mobile {
+            font-size: 1.3rem;
+          }
+        }
+      }
     }
   }
 }

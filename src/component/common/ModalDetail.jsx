@@ -52,9 +52,9 @@ function ModalDetail(props) {
   };
 
   const handleDetail = (item) => {
-    const name = item.name
-      ? item.name.replaceAll(" ", "-")
-      : item.title.replaceAll(" ", "-");
+    const name = item?.name
+      ? item?.name.replaceAll(" ", "-")
+      : item?.title.replaceAll(" ", "-");
     getVideo();
   };
   const handleMoviePlay = (res) => {
@@ -75,17 +75,22 @@ function ModalDetail(props) {
     } else if (location.pathname == "/movies") {
       setType("movie");
     }
-    if (checkDetail) {
-      const modalDetail = document.querySelector(".modal__detail");
-      const modalOverlay = document.querySelector(".overlay__modal");
-      modalDetail.classList.add("active");
-      modalOverlay.classList.add("visible");
-    }
+    // if (checkDetail) {
+    //   const modalDetail = document.querySelector(".modal__detail");
+    //   const modalOverlay = document.querySelector(".overlay__modal");
+    //   modalDetail.classList.add("active");
+    //   modalOverlay.classList.add("visible");
+    // }
   }, [checkDetail]);
+
+  const handleClickPlay = () => {
+    console.log("play");
+  };
   return (
     <>
       <div className="overlay__modal">
-        <div className={checkDetail ? "modal__detail active" : "modal__detail"}>
+        {/* <div className={checkDetail ? "modal__detail active" : "modal__detail"}> */}
+        <div className="modal__detail">
           <div className="modal__detail__icon" onClick={handleClickModal}>
             <i className="bx bx-x"></i>
           </div>

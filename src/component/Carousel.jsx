@@ -9,13 +9,15 @@ function Carousel(props) {
   const [toggleClass, setToggleClass] = useState(false);
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDisLike, setToggleDisLike] = useState(false);
+  const modalDetailElement = document.querySelector(".modal__detail");
 
   const handleClick = (data) => {
+    console.log("click");
     props.handleClickCarousel(data);
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "64px" }}>
       <h2 className="carousel__title">{title}</h2>
       <Slider {...settings}>
         {dataCarousel &&

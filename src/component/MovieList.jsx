@@ -9,14 +9,26 @@ MovieList.propTypes = {
 
 function MovieList(props) {
   const { dataMovie, title, Pagination, page, type } = props;
+
+  const modalDetail = document.querySelector(".modal__detail");
+  const modalOverlay = document.querySelector(".overlay__modal");
   const handlePagination = (data) => {
     props.Pagination(data);
+    const bannerElement = document.querySelector(".banner__content");
+    // console.log([bannerElement]);
+    document.documentElement.scrollTop = bannerElement.clientHeight;
   };
   const handleClickDetail = (item) => {
     props.showDetailMovie(item.id);
 
     document.documentElement.scrollTop = 80;
+
+    if (modalOverlay) {
+      modalDetail.classList.add("active");
+      modalOverlay.classList.add("visible");
+    }
   };
+
   return (
     <div className="list__movie">
       <h2 className="list__movie__title"># {title}</h2>

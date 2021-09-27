@@ -8,7 +8,7 @@
   overflow: scroll;
   background-color: #141414;
   display: none;
-  z-index: 90;
+  z-index: 99;
   box-shadow: $box-shadow;
   margin-top: $header-shrink-height;
 
@@ -19,7 +19,7 @@
   }
   @include mobile {
     position: fixed;
-    top: 0;
+    top: 36px;
     margin-top: 0;
   }
 

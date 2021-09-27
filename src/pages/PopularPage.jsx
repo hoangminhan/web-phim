@@ -6,6 +6,7 @@ import ModalDetail from "../component/common/ModalDetail";
 import ModalDetailTv from "../component/ModalDetailTv";
 import MovieList from "../component/MovieList";
 import { API_KEY, URL_API } from "../constant";
+import bannerLoading from "../assets/images/loadingvideo.jpg";
 
 PopularPage.propTypes = {};
 
@@ -19,12 +20,36 @@ function PopularPage(props) {
   const [dataSimilarTv, setDataSimilarTv] = useState();
   const [filterMoviePopular, setFilterMoviePopular] = useState({ page: 1 });
 
+  const modalDetail = document.querySelector(".modal__detail");
+  const modalOverlay = document.querySelector(".overlay__modal");
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", right: "-10px" }}
+        onClick={onClick}
+      />
+    );
+  }
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", left: "-10px" }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    arrows: false,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -38,6 +63,8 @@ function PopularPage(props) {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
         },
       },
       {
@@ -45,6 +72,8 @@ function PopularPage(props) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
         },
       },
     ],
@@ -107,33 +136,51 @@ function PopularPage(props) {
     console.log(id);
     setCheckDetail(id);
   };
+  const handleClickBanner = (id) => {
+    console.log(id);
+    setCheckDetail(id);
+    if (modalOverlay) {
+      modalDetail.classList.add("active");
+      modalOverlay.classList.add("visible");
+    }
+  };
 
   return (
-    <div className="main">
-      <div className="content__new">
-        <div className="container">
-          <div className="content__new__upcoming">
-            <MovieList
-              dataMovie={dataMoviePopular}
-              title="Movie Popular"
-              page={filterMoviePopular.page}
-              showDetailMovie={handleShowDetailMovie}
-            />
-            <Carousel
-              dataCarousel={dataTvShowPopular}
-              title="Tv Shows Popular"
-              settings={settings}
-              handleClickCarousel={handleClickCarousel}
-            />
+    <>
+      {dataMoviePopular ? (
+        <div className="main">
+          <Banner
+            dataBanner={dataMoviePopular}
+            handleClickBanner={handleClickBanner}
+          />
+          <div className="content__new">
+            <div className="container">
+              <div className="content__new__upcoming">
+                <MovieList
+                  dataMovie={dataMoviePopular}
+                  title="Movie Popular"
+                  page={filterMoviePopular.page}
+                  showDetailMovie={handleShowDetailMovie}
+                />
+                <Carousel
+                  dataCarousel={dataTvShowPopular}
+                  title="# Tv Shows Popular"
+                  settings={settings}
+                  handleClickCarousel={handleClickCarousel}
+                />
+              </div>
+            </div>
           </div>
+          <ModalDetail
+            checkDetail={checkDetail}
+            dataDetail={dataDetail}
+            dataSimilar={dataSimilar}
+          />
         </div>
-      </div>
-      <ModalDetail
-        checkDetail={checkDetail}
-        dataDetail={dataDetail}
-        dataSimilar={dataSimilar}
-      />
-    </div>
+      ) : (
+        <img src={bannerLoading} alt="" />
+      )}
+    </>
   );
 }
 

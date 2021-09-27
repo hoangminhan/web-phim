@@ -6,6 +6,61 @@ import { URL_API, API_KEY, URL_IMG, URL_IMG_BIG } from "../constant";
 import MovieList from "../component/MovieList";
 import ModalDetail from "../component/common/ModalDetail";
 import Banner from "../component/Banner";
+import bannerNetflix from "../assets/images/loadingvideo.jpg";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", right: "-10px", zIndex: 0 }}
+      onClick={onClick}
+    />
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", left: "-10px", zIndex: 0 }}
+      onClick={onClick}
+    />
+  );
+}
+
+const settings = {
+  infinite: true,
+  speed: 500,
+  // arrows: false,
+  slidesToShow: 5,
+  slidesToScroll: 5,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+      },
+    },
+  ],
+};
 
 HomePage.propTypes = {};
 
@@ -22,6 +77,9 @@ function HomePage(props) {
   const [dataDetail, setDataDetail] = useState();
   const [dataSimilar, setDataSimilar] = useState();
   const [checkDetail, setCheckDetail] = useState();
+
+  const modalDetail = document.querySelector(".modal__detail");
+  const modalOverlay = document.querySelector(".overlay__modal");
 
   useEffect(() => {
     document.title = "Home Page";
@@ -87,36 +145,6 @@ function HomePage(props) {
       fetchData();
     }
   }, [checkDetail]);
-  const settings = {
-    infinite: true,
-    speed: 500,
-    arrows: false,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
 
   const showDetailMovie = (data) => {
     setCheckDetail(data);
@@ -124,44 +152,67 @@ function HomePage(props) {
   };
 
   const handleClickCarousel = (id) => {
+    console.log("id", id);
     setCheckDetail(id);
+    if (modalOverlay) {
+      modalDetail.classList.add("active");
+      modalOverlay.classList.add("visible");
+    }
+  };
+  const handleClickBanner = (id) => {
+    console.log(id);
+    setCheckDetail(id);
+    if (modalOverlay) {
+      modalDetail.classList.add("active");
+      modalOverlay.classList.add("visible");
+    }
   };
 
   return (
-    <div className="main">
-      <div className="content__home">
-        <div className="container">
-          <div className="content__home__popular">
-            <Carousel
-              dataCarousel={dataPopular}
-              title="# Movie Popular"
-              settings={settings}
-              handleClickCarousel={handleClickCarousel}
-            />
-            <MovieList
-              dataMovie={dataTopRate}
-              title="Top Rate"
-              // Pagination={Pagination}
-              page={filterPopular.page}
-              type="movie"
-              showDetailMovie={showDetailMovie}
-            />
+    <>
+      {dataTopRate ? (
+        <div className="main">
+          <Banner
+            handleClickBanner={handleClickBanner}
+            dataBanner={dataTopRate}
+          />
+          <div className="content__home">
+            <div className="container">
+              <div className="content__home__popular">
+                <Carousel
+                  dataCarousel={dataPopular}
+                  title="# Movie Popular"
+                  settings={settings}
+                  handleClickCarousel={handleClickCarousel}
+                />
+                <MovieList
+                  dataMovie={dataTopRate}
+                  title="Top Rate"
+                  // Pagination={Pagination}
+                  page={filterPopular.page}
+                  type="movie"
+                  showDetailMovie={showDetailMovie}
+                />
 
-            <MovieList
-              dataMovie={dataMovieNow}
-              title="TV Shows"
-              type="tv"
-              showDetailMovie={showDetailMovie}
-            />
+                <MovieList
+                  dataMovie={dataMovieNow}
+                  title="TV Shows"
+                  type="tv"
+                  showDetailMovie={showDetailMovie}
+                />
+              </div>
+            </div>
           </div>
+          <ModalDetail
+            checkDetail={checkDetail}
+            dataDetail={dataDetail}
+            dataSimilar={dataSimilar}
+          />
         </div>
-      </div>
-      <ModalDetail
-        checkDetail={checkDetail}
-        dataDetail={dataDetail}
-        dataSimilar={dataSimilar}
-      />
-    </div>
+      ) : (
+        <img src={bannerNetflix} alt="" />
+      )}
+    </>
   );
 }
 

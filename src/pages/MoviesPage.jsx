@@ -4,6 +4,7 @@ import Banner from "../component/Banner";
 import ModalDetail from "../component/common/ModalDetail";
 import MovieList from "../component/MovieList";
 import { API_KEY, URL_API } from "../constant";
+import bannerLoading from "../assets/images/loadingvideo.jpg";
 
 MoviesPage.propTypes = {};
 
@@ -15,6 +16,9 @@ function MoviesPage(props) {
   const [dataDetail, setDataDetail] = useState();
   const [checkDetail, setCheckDetail] = useState();
   const [dataSimilar, setCheckDataSimilar] = useState();
+
+  const modalDetail = document.querySelector(".modal__detail");
+  const modalOverlay = document.querySelector(".overlay__modal");
 
   useEffect(() => {
     const getData = async () => {
@@ -65,27 +69,46 @@ function MoviesPage(props) {
     setCheckDetail(id);
     document.documentElement.scrollTop = 0;
   };
+  console.log("movie", dataMovie);
+  const handleClickBanner = (id) => {
+    console.log(id);
+    setCheckDetail(id);
+    if (modalOverlay) {
+      modalDetail.classList.add("active");
+      modalOverlay.classList.add("visible");
+    }
+  };
   return (
-    <div className="main">
-      <div className="content__movie">
-        <div className="container">
-          <div className="content__movie__popular">
-            <MovieList
-              title="Movie Top Rate"
-              dataMovie={dataMovie}
-              Pagination={Pagination}
-              page={movieFilter.page}
-              showDetailMovie={showDetailMovie}
-            />
+    <>
+      {dataMovie ? (
+        <div className="main">
+          <Banner
+            dataBanner={dataMovie}
+            handleClickBanner={handleClickBanner}
+          />
+          <div className="content__movie">
+            <div className="container">
+              <div className="content__movie__popular">
+                <MovieList
+                  title="Movie Top Rate"
+                  dataMovie={dataMovie}
+                  Pagination={Pagination}
+                  page={movieFilter.page}
+                  showDetailMovie={showDetailMovie}
+                />
+              </div>
+            </div>
           </div>
+          <ModalDetail
+            checkDetail={checkDetail}
+            dataSimilar={dataSimilar}
+            dataDetail={dataDetail}
+          />
         </div>
-      </div>
-      <ModalDetail
-        checkDetail={checkDetail}
-        dataSimilar={dataSimilar}
-        dataDetail={dataDetail}
-      />
-    </div>
+      ) : (
+        <img src={bannerLoading} alt="" />
+      )}
+    </>
   );
 }
 
