@@ -11,8 +11,8 @@ function Footer(props) {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (
-        document.body.scrollTop > 300 ||
-        document.documentElement.scrollTop > 300
+        document.body.scrollTop > 1000 ||
+        document.documentElement.scrollTop > 1000
       ) {
         backTop.current.classList.add("active");
       } else {
